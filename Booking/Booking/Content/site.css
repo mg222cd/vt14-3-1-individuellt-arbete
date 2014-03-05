@@ -25,14 +25,14 @@ body {
     margin-left:50px;
     padding-top:5px;
     padding-bottom:5px;
-}
-
-#menu{
-
+    font-family:Arial;
+    font-weight:bold;
+    font-size:58px;
 }
 
 #content{
     margin-left:50px;
+    padding-bottom:40px;
 }
 
 /*Nav*/
@@ -40,6 +40,8 @@ nav a{
 	color:#000000;
 }
 nav ul{
+    padding-top:20px;
+    padding-bottom:20px;
     margin-top:0px;
     margin-left:0px;
 	display: inline-block;

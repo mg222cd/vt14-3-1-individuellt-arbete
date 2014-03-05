@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Booking</title>
-    <%--<link href="~/Content/reset.css" rel="stylesheet" type="text/css" />--%>
+    <link href="~/Content/reset.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/site.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
