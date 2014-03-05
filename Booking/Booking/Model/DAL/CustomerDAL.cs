@@ -30,7 +30,11 @@ namespace Booking.Model.DAL
                 using(var reader = cmd.ExecuteReader())
                 {
                     var customerIdIndex = reader.GetOrdinal("CustomerId"); //returnerar heltal (med index tror jag)
-
+                    var nameIndex = reader.GetOrdinal("Name");
+                    var addressIndex = reader.GetOrdinal("address");
+                    var postalIndex = reader.GetOrdinal("postal");
+                    var phoneIndex = reader.GetOrdinal("Phone");
+                    var emailIndex = reader.GetOrdinal("Email");
 
                     //läs post för post, så länge Read returnerar True
                     while (reader.Read())
