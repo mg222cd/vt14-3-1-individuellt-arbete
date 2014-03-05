@@ -10,7 +10,7 @@ namespace Booking.Model
     public class Service
     {
         private CustomerDAL _customerDAL;
-
+        //privat egenskap som instansierar nytt customerDAL-objekt i varje metod senare (tror jag)
         private CustomerDAL CustomerDAL
         {
             get { return _customerDAL ?? (_customerDAL = new CustomerDAL()); }
@@ -18,7 +18,7 @@ namespace Booking.Model
 
         public IEnumerable<Customer> GetCustomers()
         {
-
+            return CustomerDAL.GetCustomers();
         }
     }
 }

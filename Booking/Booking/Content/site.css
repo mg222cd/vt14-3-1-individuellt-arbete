@@ -81,8 +81,8 @@ nav li a{
 
 /*Typography*/
 
-#h1{
-    font-family:Arial;
+.list h2{
     font-weight:bold;
-    font-size:18px;
+    font-size:38px;
+    font-style:oblique;
 }
