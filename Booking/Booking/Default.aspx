@@ -19,9 +19,9 @@
             <nav>
                 <div id="menu">
                     <ul>
-                        <li><a href="#">Bokning</a></li>
-                        <li><a href="#">Administrera Kunder</a></li>
-                        <li><a href="#">Administrera Stugor</a></li>
+                        <li><a href="#">bokning.</a></li>
+                        <li><a href="#">administrera kunder.</a></li>
+                        <li><a href="#">administrera stugor.</a></li>
                     </ul>
                 </div><%--#menu--%>
             </nav>
