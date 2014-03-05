@@ -43,7 +43,7 @@ namespace Booking.Model.DAL
                         //samlingsobjekt av typen List
                         customers.Add(new Customer 
                         {
-                            CustomerId = reader.GetInt32(customerIdIndex),
+                            CustomerId = reader.GetInt32(customerIdIndex), //varje post översätts till ett C#-objekt av typen Customer
                             Name = reader.GetString(nameIndex),
                             Address = reader.GetString(addressIndex),
                             Postal = reader.GetInt32(postalIndex),
@@ -52,8 +52,6 @@ namespace Booking.Model.DAL
                             Email = reader.GetString(phoneIndex)
                         });
                     }
-
-
                 }
 
                 customers.TrimExcess();
