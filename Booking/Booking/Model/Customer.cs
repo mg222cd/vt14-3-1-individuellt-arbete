@@ -7,6 +7,7 @@ namespace Booking.Model
 {
     public class Customer
     {
+        //Egeneskaper som motsvarar kolumner i tabellen.
         public int CustomerId { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
