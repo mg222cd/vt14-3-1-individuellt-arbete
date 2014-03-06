@@ -9,16 +9,11 @@ body {
     background-color:#FFFFFF;
     width:960px;
     margin:auto;
-    border-color:#000000;
-    border-width:medium;
-    border-style:solid;
 }
 
 #header{
     margin-top:0px;
     width: 960px;
-    color:#FFFFFF;
-    background-color:#000000;
 }
 
 #header h1{
@@ -37,7 +32,7 @@ body {
 
 /*Nav*/
 nav a{
-	color:#000000;
+	color:#02b4e5;
 }
 nav ul{
     padding-top:20px;
@@ -70,7 +65,7 @@ nav li a:hover, .active{
 }
 
 #wrapper a:hover{
-	color:#b9c1b6;
+	color:#02b4e5;
 }
 
 nav li a{
@@ -83,6 +78,31 @@ nav li a{
 
 .list h2{
     font-weight:bold;
-    font-size:38px;
-    font-style:oblique;
+    font-size:28px;
+    padding-bottom:10px;
+}
+
+/*Tables*/
+table{
+    border-left-style:solid;
+    border-left-width:thin;
+    border-left-color:#000000;
+    border-collapse: collapse;
+    border-spacing:0px;
+    width:100%;
+}
+
+th{
+    background:#FFFFFF;
+    font-weight:bold;
+}
+
+td, th{
+    padding: 5px; 3px;
+    text-align:left;
+    vertical-align: middle;
+}
+
+tr:nth-child(2n+1){
+    background:rgba(2, 180, 229, 0.13);
 }
