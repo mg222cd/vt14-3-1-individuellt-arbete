@@ -20,6 +20,7 @@
                 <div id="menu">
                     <ul>
                         <li><a href="#">bokning</a></li>
+                        <li><a href="#">administrera bokningar</a></li>
                         <li><a href="#">administrera kunder</a></li>
                         <li><a href="#">administrera stugor</a></li>
                     </ul>
