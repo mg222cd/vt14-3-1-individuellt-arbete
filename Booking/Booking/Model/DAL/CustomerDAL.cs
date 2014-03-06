@@ -97,6 +97,32 @@ namespace Booking.Model.DAL
                 }
             }
         }
+
+        //Hitta
+        public Customer GetCustomerById(int customerId)
+        {
+            throw new NotImplementedException();
+        }
+
+        //Infoga
+        public void InsertCustomerById(Customer customer)
+        {
+            throw new NotImplementedException();
+        }
+
+        //Uppdatera
+        public void UpdateCustomer(Customer customer)
+        {
+            throw new NotImplementedException();
+        }
+
+        //Radera
+        public void DeleteCustomer(int customerId)
+        {
+            throw new NotImplementedException();
+        }
+
+
         #endregion
 
 
