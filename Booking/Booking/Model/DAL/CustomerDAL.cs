@@ -21,7 +21,7 @@ namespace Booking.Model.DAL
                 var customers = new List<Customer>(100);
 
                 //kommando för att exec lagrad procedur
-                var cmd = new SqlCommand("usp_GetCustomers", conn);
+                var cmd = new SqlCommand("[appSchema].[usp_GetCustomers]", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 //öppna anslutningen (vill man göra så sent som möjligt)
