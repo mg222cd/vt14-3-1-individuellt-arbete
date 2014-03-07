@@ -28,6 +28,8 @@
             </nav>
             <div class="list">
             <h2>kunder</h2>
+                <%--Validation Summary--%>
+                <asp:ValidationSummary ID="ValidationSummary1" runat="server" HeaderText="Fel inträffade. Korrigera felet och försök igen." CssClass="ValidationSummaryErrors" />
                 <%--LISTVIEW--%>
                 <asp:ListView ID="CustomerListView" runat="server"
                     ItemType="Booking.Model.Customer"

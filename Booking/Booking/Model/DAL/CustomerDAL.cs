@@ -77,10 +77,10 @@ namespace Booking.Model.DAL
                                 CustomerId = reader.GetInt32(customerIdIndex), //varje post översätts till ett C#-objekt av typen Customer
                                 Name = reader.GetString(nameIndex),
                                 Address = reader.GetString(addressIndex),
-                                Postal = reader.GetInt32(postalIndex),
+                                Postal = reader.GetString(postalIndex),
                                 City = reader.GetString(cityIndex),
                                 Phone = reader.GetString(phoneIndex),
-                                Email = reader.GetString(phoneIndex)
+                                Email = reader.GetString(emailIndex)
                             });
                         }
                     }
@@ -130,7 +130,7 @@ namespace Booking.Model.DAL
                                 CustomerId = reader.GetInt32(customerIdIndex), //översätts till ett C#-objekt av typen Customer
                                 Name = reader.GetString(nameIndex),
                                 Address = reader.GetString(addressIndex),
-                                Postal = reader.GetInt32(postalIndex),
+                                Postal = reader.GetString(postalIndex),
                                 City = reader.GetString(cityIndex),
                                 Phone = reader.GetString(phoneIndex),
                                 Email = reader.GetString(phoneIndex)
@@ -198,7 +198,7 @@ namespace Booking.Model.DAL
                     cmd.Parameters.Add("@CustomerID", SqlDbType.Int, 4).Value = customer.CustomerId;
                     cmd.Parameters.Add("@Name", SqlDbType.VarChar, 40).Value = customer.Name;
                     cmd.Parameters.Add("@Address", SqlDbType.VarChar, 40).Value = customer.Address;
-                    cmd.Parameters.Add("@Postal", SqlDbType.Int, 4).Value = customer.Postal;
+                    cmd.Parameters.Add("@Postal", SqlDbType.VarChar, 6).Value = customer.Postal;
                     cmd.Parameters.Add("@City", SqlDbType.VarChar, 25).Value = customer.City;
                     cmd.Parameters.Add("@Phone", SqlDbType.VarChar, 20).Value = customer.Phone;
                     cmd.Parameters.Add("@Email", SqlDbType.VarChar, 50).Value = customer.Email;
