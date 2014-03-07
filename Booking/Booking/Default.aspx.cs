@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.ComponentModel.DataAnnotations;
 
 namespace Booking
 {
@@ -30,15 +31,28 @@ namespace Booking
 
         //Lägg till kund
         public void CustomerListView_InsertItem (Customer customer)
-        {
-            try
-            {
-                Service.SaveCustomer(customer);
-            }
-            catch (Exception)
-            {
-                
-                ModelState.AddModelError(String.Empty, "Ett oväntat fel uppstod då kund skulle läggas till");
+        {   
+            if (ModelState.IsValid)
+            { 
+                try
+                {
+                    Service.SaveCustomer(customer);
+                }
+                catch (Exception ex)
+                {
+                    //var validationResults = ex.Data["ValidationResults"] as IEnumerable<ValidationResult>;
+                    //if (validationResults != null)
+                    //{
+                    //    foreach (var validationResult in validationResults)
+                    //    {
+                    //        foreach (var membername in validationResult.MemberNames)
+                    //        {
+                    //            ModelState.AddModelError(membername, validationResult.ErrorMessage);
+                    //        }
+                    //    }
+                    //}
+                    ModelState.AddModelError(String.Empty, "Ett fel uppstod då kund skulle läggas till.");
+                }
             }
         }
 

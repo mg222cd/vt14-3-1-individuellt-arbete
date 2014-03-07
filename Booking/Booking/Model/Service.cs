@@ -1,6 +1,7 @@
 ﻿using Booking.Model.DAL;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -36,8 +37,19 @@ namespace Booking.Model
 
         public void SaveCustomer(Customer customer)
         {
-            //TODO Validering i Save-metoden!
-            if (customer.CustomerId == 0)
+            //validering
+            var validationContext = new ValidationContext(customer);
+            var validationResults = new List<ValidationResult>();
+            if (!Validator.TryValidateObject(customer, validationContext, validationResults, true))
+            {
+                var ex = new ValidationException("Objektet klarade inte valideringen");
+
+                ex.Data.Add("ValidationResults", validationResults);
+
+                throw ex;
+            }
+
+            if (customer.CustomerId == 0)//Ny post om CustomerId är 0
             {
                 CustomerDAL.InsertCustomer(customer);
             }
