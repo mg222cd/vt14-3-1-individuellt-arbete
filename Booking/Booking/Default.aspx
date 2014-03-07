@@ -35,9 +35,10 @@
                     InsertMethod="CustomerListView_InsertItem"
                     UpdateMethod="CustomerListView_UpdateItem"
                     DeleteMethod="CustomerListView_DeleteItem"
-                    DataKeyNames="CustomerId">
+                    DataKeyNames="CustomerId"
+                    InsertItemPosition="FirstItem">
                     <LayoutTemplate>
-                        <table>
+                        <table class="grid">
                             <tr>
                                 <th>Namn</th>
                                 <th>Adress</th>
@@ -45,6 +46,7 @@
                                 <th>Ort</th>
                                 <th>Telefon</th>
                                 <th>E-mail</th>
+                                <th></th>
                             </tr>
                             <%--Platshållare för nya rader --%>
                             <asp:PlaceHolder ID="ItemPlaceHolder" runat="server"></asp:PlaceHolder>
@@ -71,13 +73,21 @@
                             <td>
                                 <asp:Label ID="EmailLabel" runat="server" Text='<%#: Item.Email %>' ></asp:Label>
                             </td>
+                            <td class="command">
+                                <asp:LinkButton runat="server" CommandName="Edit" Text="Ändra" CausesValidation="false" />
+                                <asp:LinkButton runat="server" CommandName="Delete" Text="Radera" CausesValidation="false" />
+                            </td>
                         </tr>
                     </ItemTemplate>
                     <EmptyDataTemplate>
                     <%-- Detta visas då kunduppgifter saknas i databasen. --%>
-                    <p>
-                        Kunduppgifter saknas.
-                    </p>
+                    <table class="grid">
+                        <tr>
+                            <td>
+                                Kunduppgifter saknas.
+                            </td>
+                        </tr>
+                    </table>
                 </EmptyDataTemplate>
                     <InsertItemTemplate>
                         <tr>

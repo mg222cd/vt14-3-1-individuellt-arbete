@@ -64,6 +64,11 @@ nav li a:hover, .active{
 	font-weight:bold;
 }
 
+.grid a{
+    color:#000000;
+    font-size:15px;
+}
+
 #wrapper a:hover{
 	color:#02b4e5;
 }

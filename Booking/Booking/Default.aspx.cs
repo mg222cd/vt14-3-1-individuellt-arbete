@@ -22,10 +22,64 @@ namespace Booking
 
         }
 
-       //ListView
+       //Visa alla kunder
         public IEnumerable<Customer> CustomerListView_GetData()
         {
             return Service.GetCustomers();
         }
+
+        //Lägg till kund
+        public void CustomerListView_InsertItem (Customer customer)
+        {
+            try
+            {
+                Service.SaveCustomer(customer);
+            }
+            catch (Exception)
+            {
+                
+                ModelState.AddModelError(String.Empty, "Ett oväntat fel uppstod då kund skulle läggas till");
+            }
+        }
+
+        //Uppdatera kund
+        public void CustomerListView_UpdateItem (int customerId)
+        {
+            try
+            {
+                var customer = Service.GetCustomer(customerId);
+                if (customer == null)
+                {
+                    ModelState.AddModelError(String.Empty,
+                        String.Format("Kunden med kundnummer {0} hittades inte", customerId));
+                }
+                if (TryUpdateModel(customer))
+                {
+                    Service.SaveCustomer(customer);
+                }
+            }
+            catch (Exception)
+            {
+
+                ModelState.AddModelError(String.Empty, "Ett oväntet fel inträffade då kund skulle uppdateras");
+            }
+        }
+
+        //radera kund
+        public void CustomerListView_DeleteItem(int customerId)
+        {
+            try
+            {
+                Service.GetCustomer(customerId);
+            }
+            catch (Exception)
+            {
+
+                ModelState.AddModelError(String.Empty, "ETt oväntat fel inträffade då kund skulle raderas");
+            }
+        }
+
+
+
     }
 }
