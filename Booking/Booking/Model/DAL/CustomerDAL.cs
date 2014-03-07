@@ -170,6 +170,9 @@ namespace Booking.Model.DAL
                     //öppnar anslutning till databasen
                     conn.Open();
 
+                    //exec
+                    cmd.ExecuteNonQuery();
+
                     //metod för att exec lagrade proceduren
                     customer.CustomerId = (int)cmd.Parameters["@CustomerId"].Value;
 
@@ -192,6 +195,7 @@ namespace Booking.Model.DAL
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     //lägger till parametrar
+                    cmd.Parameters.Add("@CustomerID", SqlDbType.Int, 4).Value = customer.CustomerId;
                     cmd.Parameters.Add("@Name", SqlDbType.VarChar, 40).Value = customer.Name;
                     cmd.Parameters.Add("@Address", SqlDbType.VarChar, 40).Value = customer.Address;
                     cmd.Parameters.Add("@Postal", SqlDbType.Int, 4).Value = customer.Postal;

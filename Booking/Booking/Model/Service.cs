@@ -19,6 +19,11 @@ namespace Booking.Model
 
         #endregion
 
+        public void DeleteCustomer (int customerId)
+        {
+            CustomerDAL.DeleteCustomer(customerId);
+        }
+
         public Customer GetCustomer(int customerId)
         {
             return CustomerDAL.GetCustomerById(customerId);

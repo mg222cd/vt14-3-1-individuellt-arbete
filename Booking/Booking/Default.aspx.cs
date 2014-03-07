@@ -70,7 +70,7 @@ namespace Booking
         {
             try
             {
-                Service.GetCustomer(customerId);
+                Service.DeleteCustomer(customerId);
             }
             catch (Exception)
             {
