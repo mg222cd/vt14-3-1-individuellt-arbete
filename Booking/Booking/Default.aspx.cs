@@ -38,19 +38,8 @@ namespace Booking
                 {
                     Service.SaveCustomer(customer);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    //var validationResults = ex.Data["ValidationResults"] as IEnumerable<ValidationResult>;
-                    //if (validationResults != null)
-                    //{
-                    //    foreach (var validationResult in validationResults)
-                    //    {
-                    //        foreach (var membername in validationResult.MemberNames)
-                    //        {
-                    //            ModelState.AddModelError(membername, validationResult.ErrorMessage);
-                    //        }
-                    //    }
-                    //}
                     ModelState.AddModelError(String.Empty, "Ett fel uppstod då kund skulle läggas till.");
                 }
             }

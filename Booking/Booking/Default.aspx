@@ -29,7 +29,13 @@
             <div class="list">
             <h2>kunder</h2>
                 <%--Validation Summary--%>
-                <asp:ValidationSummary ID="ValidationSummary1" runat="server" HeaderText="Fel inträffade. Korrigera felet och försök igen." CssClass="ValidationSummaryErrors" />
+                <asp:ValidationSummary ID="ValidationSummary1" runat="server" HeaderText="Fel inträffade! Korrigera och försök igen." 
+                    CssClass="ValidationSummaryErrors" />
+                <asp:ValidationSummary ID="ValidationSummary2" runat="server" HeaderText="Fel inträffade! Korrigera och försök igen."
+                    ValidationGroup="InsertGroup" ShowModelStateErrors="false" />
+                <asp:ValidationSummary ID="ValidationSummary3" runat="server" HeaderText="Fel inträffade! Korrigera och försök igen." 
+                    ValidationGroup="EditGroup" ShowModelStateErrors="false"/>
+
                 <%--LISTVIEW--%>
                 <asp:ListView ID="CustomerListView" runat="server"
                     ItemType="Booking.Model.Customer"
@@ -77,7 +83,8 @@
                             </td>
                             <td class="command">
                                 <asp:LinkButton runat="server" CommandName="Edit" Text="Ändra" CausesValidation="false" />
-                                <asp:LinkButton runat="server" CommandName="Delete" Text="Radera" CausesValidation="false" />
+                                <asp:LinkButton runat="server" CommandName="Delete" Text="Radera" CausesValidation="false" 
+                                     OnClientClick='<%# String.Format("return confirm(\"Vill du verkligen ta bort {0} från kontaktlistan?\")", Item.Name) %>'  />
                             </td>
                         </tr>
                     </ItemTemplate>
@@ -95,21 +102,46 @@
                         <tr>
                             <td>
                                 <asp:TextBox ID="Name" runat="server" Text='<%# BindItem.Name %>' />
+                                <%-- Validering Input Name --%>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+                                    ErrorMessage="Namn måste anges" ControlToValidate="Name" ValidationGroup="InsertGroup"
+                                    Display="None"></asp:RequiredFieldValidator>
                             </td>
                             <td>
                                 <asp:TextBox ID="Address" runat="server" Text='<%# BindItem.Address %>' />
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
+                                    ErrorMessage="Adress måste anges" ControlToValidate="Address" ValidationGroup="InsertGroup"
+                                    Display="None"></asp:RequiredFieldValidator>
                             </td>
                             <td>
                                 <asp:TextBox ID="Postal" runat="server" Text='<%# BindItem.Postal %>' />
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
+                                    ErrorMessage="Postnr måste anges" ControlToValidate="Postal" ValidationGroup="InsertGroup"
+                                    Display="None"></asp:RequiredFieldValidator>
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" 
+                                    ErrorMessage="Postnumret är ogiltigt" ControlToValidate="Postal" ValidationExpression="^[1-9]\d{2} ?\d{2}"
+                                    ValidationGroup="InsertGrout" Display="None"></asp:RegularExpressionValidator>
                             </td>
                             <td>
                                 <asp:TextBox ID="City" runat="server" Text='<%# BindItem.City %>' />
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" 
+                                    ErrorMessage="Ort måste anges" ControlToValidate="City" ValidationGroup="InsertGroup"
+                                    Display="None"></asp:RequiredFieldValidator>
                             </td>
                             <td>
                                 <asp:TextBox ID="Phone" runat="server" Text='<%# BindItem.Phone %>' />
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" 
+                                    ErrorMessage="Telefonnr måste anges" ControlToValidate="Phone" ValidationGroup="InsertGroup"
+                                    Display="None"></asp:RequiredFieldValidator>
                             </td>
                             <td>
                                 <asp:TextBox ID="Email" runat="server" Text='<%# BindItem.Email %>' />
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" 
+                                    ErrorMessage="Email måste anges" ControlToValidate="Email" ValidationGroup="InsertGroup"
+                                    Display="None"></asp:RequiredFieldValidator>
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" 
+                                    ErrorMessage="E-mailadressen är ogiltig" ControlToValidate="Email" ValidationExpression="^[1-9]\d{2} ?\d{2}"
+                                    ValidationGroup="InsertGrout" Display="None"></asp:RegularExpressionValidator>
                             </td>
                             <td>
                                 <%-- Kommandoknappar --%>
@@ -122,21 +154,46 @@
                          <tr>
                             <td>
                                 <asp:TextBox ID="Name" runat="server" Text='<%# BindItem.Name %>' />
+                                <%-- Validering Input Name --%>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+                                    ErrorMessage="Namn måste anges" ControlToValidate="Name" ValidationGroup="InsertGroup"
+                                    Display="None"></asp:RequiredFieldValidator>
                             </td>
                             <td>
                                 <asp:TextBox ID="Address" runat="server" Text='<%# BindItem.Address %>' />
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
+                                    ErrorMessage="Adress måste anges" ControlToValidate="Address" ValidationGroup="InsertGroup"
+                                    Display="None"></asp:RequiredFieldValidator>
                             </td>
                             <td>
                                 <asp:TextBox ID="Postal" runat="server" Text='<%# BindItem.Postal %>' />
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
+                                    ErrorMessage="Postnr måste anges" ControlToValidate="Postal" ValidationGroup="InsertGroup"
+                                    Display="None"></asp:RequiredFieldValidator>
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" 
+                                    ErrorMessage="Postnumret är ogiltigt" ControlToValidate="Postal" ValidationExpression="^[1-9]\d{2} ?\d{2}"
+                                    ValidationGroup="InsertGrout" Display="None"></asp:RegularExpressionValidator>
                             </td>
                             <td>
                                 <asp:TextBox ID="City" runat="server" Text='<%# BindItem.City %>' />
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" 
+                                    ErrorMessage="Ort måste anges" ControlToValidate="City" ValidationGroup="InsertGroup"
+                                    Display="None"></asp:RequiredFieldValidator>
                             </td>
                             <td>
                                 <asp:TextBox ID="Phone" runat="server" Text='<%# BindItem.Phone %>' />
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" 
+                                    ErrorMessage="Telefonnr måste anges" ControlToValidate="Phone" ValidationGroup="InsertGroup"
+                                    Display="None"></asp:RequiredFieldValidator>
                             </td>
                             <td>
                                 <asp:TextBox ID="Email" runat="server" Text='<%# BindItem.Email %>' />
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" 
+                                    ErrorMessage="Email måste anges" ControlToValidate="Email" ValidationGroup="InsertGroup"
+                                    Display="None"></asp:RequiredFieldValidator>
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" 
+                                    ErrorMessage="E-mailadressen är ogiltig" ControlToValidate="Email" ValidationExpression="^[1-9]\d{2} ?\d{2}"
+                                    ValidationGroup="InsertGrout" Display="None"></asp:RegularExpressionValidator>
                             </td>
                             <td>
                                 <%-- Kommandoknappar --%>

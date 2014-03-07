@@ -38,14 +38,11 @@ namespace Booking.Model
         public void SaveCustomer(Customer customer)
         {
             //validering
-            var validationContext = new ValidationContext(customer);
-            var validationResults = new List<ValidationResult>();
-            if (!Validator.TryValidateObject(customer, validationContext, validationResults, true))
+            ICollection<ValidationResult> validationResults;
+            if (!customer.Validate(out validationResults))
             {
                 var ex = new ValidationException("Objektet klarade inte valideringen");
-
                 ex.Data.Add("ValidationResults", validationResults);
-
                 throw ex;
             }
 
