@@ -32,6 +32,9 @@
                 <asp:ListView ID="CustomerListView" runat="server"
                     ItemType="Booking.Model.Customer"
                     SelectMethod="CustomerListView_GetData"
+                    InsertMethod="CustomerListView_InsertItem"
+                    UpdateMethod="CustomerListView_UpdateItem"
+                    DeleteMethod="CustomerListView_DeleteItem"
                     DataKeyNames="CustomerId">
                     <LayoutTemplate>
                         <table>
@@ -96,10 +99,39 @@
                             <td>
                                 <asp:TextBox ID="Email" runat="server" Text='<%# BindItem.Email %>' />
                             </td>
+                            <td>
+                                <%-- Kommandoknappar --%>
+                                <asp:LinkButton runat="server" CommandName="Insert" Text="Lägg till" />
+                                <asp:LinkButton runat="server" CommandName="Cancel" Text="Rensa" CausesValidation="false" />
+                            </td>
                         </tr>
                     </InsertItemTemplate>
                     <EditItemTemplate>
-
+                         <tr>
+                            <td>
+                                <asp:TextBox ID="Name" runat="server" Text='<%# BindItem.Name %>' />
+                            </td>
+                            <td>
+                                <asp:TextBox ID="Address" runat="server" Text='<%# BindItem.Address %>' />
+                            </td>
+                            <td>
+                                <asp:TextBox ID="Postal" runat="server" Text='<%# BindItem.Postal %>' />
+                            </td>
+                            <td>
+                                <asp:TextBox ID="City" runat="server" Text='<%# BindItem.City %>' />
+                            </td>
+                            <td>
+                                <asp:TextBox ID="Phone" runat="server" Text='<%# BindItem.Phone %>' />
+                            </td>
+                            <td>
+                                <asp:TextBox ID="Email" runat="server" Text='<%# BindItem.Email %>' />
+                            </td>
+                            <td>
+                                <%-- Kommandoknappar --%>
+                                <asp:LinkButton runat="server" CommandName="Update" Text="Spara" />
+                                <asp:LinkButton runat="server" CommandName="Cancel" Text="Avbryt" CausesValidation="false" />
+                            </td>
+                        </tr>
                     </EditItemTemplate>
 
                 </asp:ListView>
