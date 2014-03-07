@@ -76,6 +76,32 @@
                         Kunduppgifter saknas.
                     </p>
                 </EmptyDataTemplate>
+                    <InsertItemTemplate>
+                        <tr>
+                            <td>
+                                <asp:TextBox ID="Name" runat="server" Text='<%# BindItem.Name %>' />
+                            </td>
+                            <td>
+                                <asp:TextBox ID="Address" runat="server" Text='<%# BindItem.Address %>' />
+                            </td>
+                            <td>
+                                <asp:TextBox ID="Postal" runat="server" Text='<%# BindItem.Postal %>' />
+                            </td>
+                            <td>
+                                <asp:TextBox ID="City" runat="server" Text='<%# BindItem.City %>' />
+                            </td>
+                            <td>
+                                <asp:TextBox ID="Phone" runat="server" Text='<%# BindItem.Phone %>' />
+                            </td>
+                            <td>
+                                <asp:TextBox ID="Email" runat="server" Text='<%# BindItem.Email %>' />
+                            </td>
+                        </tr>
+                    </InsertItemTemplate>
+                    <EditItemTemplate>
+
+                    </EditItemTemplate>
+
                 </asp:ListView>
 
             </div><%--#customers--%>

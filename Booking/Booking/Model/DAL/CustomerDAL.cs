@@ -108,7 +108,7 @@ namespace Booking.Model.DAL
                     var cmd = new SqlCommand("[appSchema].[usp_GetCustomerById]", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
                     //skickar med kundId till lagrade proceduren
-                    cmd.Parameters.Add("@CustomerId", SqlDbType.Int, 4).Value = customerId;
+                    cmd.Parameters.Add("@CustomerID", SqlDbType.Int, 4).Value = customerId;
 
                     //öppna anslutning till databasen
                     conn.Open();
@@ -146,7 +146,7 @@ namespace Booking.Model.DAL
             }
         }
 
-        public void InsertCustomerById(Customer customer)
+        public void InsertCustomer(Customer customer)
         {
             using (SqlConnection conn = CreateConnection())
             {
@@ -176,7 +176,7 @@ namespace Booking.Model.DAL
                 }
                 catch
                 {
-                    throw new ApplicationException("Fel uppstod då kund skulle infogas.")
+                    throw new ApplicationException("Fel uppstod då kund skulle infogas.");
                 }
             }
         }
@@ -219,12 +219,23 @@ namespace Booking.Model.DAL
             {
                 try
                 {
+                    //lagrad procedur
+                    SqlCommand cmd = new SqlCommand("[appSchema].[usp_DeleteCustomer]", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
 
+                    //lägger till parameter den lagrade proceduren kräver
+                    cmd.Parameters.Add("@CustomerID", SqlDbType.Int, 4).Value = customerId;
+
+                    //öppnar anslutning
+                    conn.Open();
+
+                    //exekverar den lagrade proceduren
+                    cmd.ExecuteNonQuery();
                 }
                 catch (Exception)
                 {
-                    
-                    throw;
+
+                    throw new ApplicationException("Fel uppstod då kund skulle raderas");
                 }
             }
         }
