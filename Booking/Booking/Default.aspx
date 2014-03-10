@@ -59,6 +59,8 @@
                             <%--Platshållare för nya rader --%>
                             <asp:PlaceHolder ID="ItemPlaceHolder" runat="server"></asp:PlaceHolder>
                         </table>
+                    <%-- Pager --%>
+                    <asp:DataPager ID="DataPager1" runat="server"></asp:DataPager>
                     </LayoutTemplate>
                     <ItemTemplate>
                         <%--Mall för nya rader--%>
@@ -202,7 +204,7 @@
                             </td>
                         </tr>
                     </EditItemTemplate>
-
+                    
                 </asp:ListView>
 
             </div><%--#customers--%>
