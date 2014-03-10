@@ -59,14 +59,6 @@
                             <%--Platshållare för nya rader --%>
                             <asp:PlaceHolder ID="ItemPlaceHolder" runat="server"></asp:PlaceHolder>
                         </table>
-                    <%-- Pager --%>
-                    <asp:DataPager ID="DataPager1" runat="server" PageSize="5">
-                        <Fields>
-                            <asp:NextPreviousPagerField ShowFirstPageButton="true" FirstPageText=" <<" ShowNextPageButton="false" ShowPreviousPageButton="false" />
-                            <asp:NumericPagerField />
-                            <asp:NextPreviousPagerField />
-                        </Fields>
-                    </asp:DataPager>
                     </LayoutTemplate>
                     <ItemTemplate>
                         <%--Mall för nya rader--%>
