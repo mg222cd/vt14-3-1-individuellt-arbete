@@ -60,7 +60,13 @@
                             <asp:PlaceHolder ID="ItemPlaceHolder" runat="server"></asp:PlaceHolder>
                         </table>
                     <%-- Pager --%>
-                    <asp:DataPager ID="DataPager1" runat="server"></asp:DataPager>
+                    <asp:DataPager ID="DataPager1" runat="server" PageSize="5">
+                        <Fields>
+                            <asp:NextPreviousPagerField />
+                            <asp:NumericPagerField />
+                            <asp:NextPreviousPagerField />
+                        </Fields>
+                    </asp:DataPager>
                     </LayoutTemplate>
                     <ItemTemplate>
                         <%--Mall för nya rader--%>
