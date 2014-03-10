@@ -62,7 +62,7 @@
                     <%-- Pager --%>
                     <asp:DataPager ID="DataPager1" runat="server" PageSize="5">
                         <Fields>
-                            <asp:NextPreviousPagerField />
+                            <asp:NextPreviousPagerField ShowFirstPageButton="true" FirstPageText=" <<" ShowNextPageButton="false" ShowPreviousPageButton="false" />
                             <asp:NumericPagerField />
                             <asp:NextPreviousPagerField />
                         </Fields>
