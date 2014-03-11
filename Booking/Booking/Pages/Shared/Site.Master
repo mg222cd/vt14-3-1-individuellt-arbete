@@ -1,0 +1,37 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Booking.Pages.Shared.Site" ViewStateMode="Disabled" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Booking</title>
+    <%: System.Web.Optimization.Styles.Render("~/Content") %>
+    <link href="~/Content/reset.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/site.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <form id="theForm" runat="server">
+    <div class="container">
+        <div id="header">
+            <h1>bokning.</h1>
+        </div><%--#header--%>
+    <div id="wrapper">
+        <div id="content">
+            <nav>
+                <div id="menu">
+                    <ul>
+                        <li><a href="#">bokning</a></li>
+                        <li><a href="#">administrera bokningar</a></li>
+                        <li><a href="#">administrera kunder</a></li>
+                        <li><a href="#">administrera stugor</a></li>
+                    </ul>
+                </div><%--#menu--%>
+            </nav>
+
+                <asp:ContentPlaceHolder ID="MainContentPlaceHolder1" runat="server" />
+        
+      </div></div><%--#wrapper & content--%>
+    </div>
+    </form>
+</body>
+</html>
