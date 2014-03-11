@@ -83,11 +83,13 @@
     <Content Include="Error.html" />
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
+    <Content Include="Pages\BookingPages\Listing.aspx" />
     <Content Include="Pages\Shared\Site.Master" />
     <None Include="Properties\PublishProfiles\MyProfile.pubxml" />
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.0.js" />
     <Content Include="Scripts\jquery-2.1.0.min.js" />
+    <Content Include="Scripts\modernizr-2.7.2.js" />
     <Content Include="Web.config" />
     <Content Include="Scripts\jquery-2.1.0.min.map" />
   </ItemGroup>
@@ -108,6 +110,13 @@
     <Compile Include="Model\Customer.cs" />
     <Compile Include="Model\DAL\CustomerDAL.cs" />
     <Compile Include="Model\Service.cs" />
+    <Compile Include="Pages\BookingPages\Listing.aspx.cs">
+      <DependentUpon>Listing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\BookingPages\Listing.aspx.designer.cs">
+      <DependentUpon>Listing.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Shared\Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -126,7 +135,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Pages\BookingPages\" />
     <Folder Include="Pages\CustomerPages\" />
     <Folder Include="Pages\PropertyPages\" />
   </ItemGroup>

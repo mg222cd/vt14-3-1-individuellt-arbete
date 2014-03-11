@@ -6,8 +6,8 @@
 <head runat="server">
     <title>Booking</title>
     <%: System.Web.Optimization.Styles.Render("~/Content") %>
-    <link href="~/Content/reset.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/site.css" rel="stylesheet" type="text/css" />
+    <%: System.Web.Optimization.Scripts.Render("~/Scripts") %>
+
 </head>
 <body>
     <form id="theForm" runat="server">
