@@ -7,5 +7,14 @@ namespace Booking.Model
 {
     public class Booking
     {
+        //Egenskaper som motsvarar kolumner i tabellen
+
+        public int BookingID { get; set; }
+        public int CustomerID { get; set; }
+        public int PropertyID { get; set; }
+        public int Week { get; set; }
+        public int Year { get; set; }
+        public int Price { get; set; }
+        public bool Cleaning { get; set; }
     }
 }
