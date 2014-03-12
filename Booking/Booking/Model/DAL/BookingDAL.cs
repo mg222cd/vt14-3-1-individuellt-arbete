@@ -51,7 +51,7 @@ namespace Booking.Model.DAL
                     var unbookedProperty1 = new List<Booking>(100);
 
                     //exec lagrad procedur
-                    var cmd = new SqlCommand("[dbo].[usp_GetUnbookedNo1]", conn);
+                    var cmd = new SqlCommand("[appSchema].[usp_GetUnbookedNo1]", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     //öppna anslutning
@@ -110,7 +110,7 @@ namespace Booking.Model.DAL
                     var unbookedProperty1 = new List<Booking>(100);
 
                     //exec lagrad procedur
-                    var cmd = new SqlCommand("[dbo].[usp_GetUnbookedNo2]", conn);
+                    var cmd = new SqlCommand("[appSchema].[usp_GetUnbookedNo2]", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     //öppna anslutning
@@ -120,12 +120,12 @@ namespace Booking.Model.DAL
                     {
                         //returnerar heltal med index
                         var bookingIdIndex = reader.GetOrdinal("BookingID");
-                        //var customerIdIndex = reader.GetOrdinal("CustomerID");
-                        //var propertyIdIndex = reader.GetOrdinal("PropertyID");
+                        var customerIdIndex = reader.GetOrdinal("CustomerID");
+                        var propertyIdIndex = reader.GetOrdinal("PropertyID");
                         var weekIndex = reader.GetOrdinal("Week");
-                        //var yearIndex = reader.GetOrdinal("Year");
+                        var yearIndex = reader.GetOrdinal("Year");
                         var priceIndex = reader.GetOrdinal("Price");
-                        //var cleaningIndex = reader.GetOrdinal("Cleaning");
+                        var cleaningIndex = reader.GetOrdinal("Cleaning");
 
                         //läs så länge Read returnerar true
                         while (reader.Read())
@@ -135,12 +135,12 @@ namespace Booking.Model.DAL
                             {
                                 //varje post översätts till C#-Bookingobjekt
                                 BookingID = reader.GetInt32(bookingIdIndex),
-                                //CustomerID = reader.GetInt32(customerIdIndex),
-                                //PropertyID = reader.GetInt32(propertyIdIndex),
+                                CustomerID = reader.GetInt32(customerIdIndex),
+                                PropertyID = reader.GetInt32(propertyIdIndex),
                                 Week = reader.GetInt32(weekIndex),
-                                //Year = reader.GetInt32(yearIndex),
+                                Year = reader.GetInt32(yearIndex),
                                 Price = reader.GetInt32(priceIndex),
-                                //Cleaning = reader.GetBoolean(cleaningIndex)
+                                Cleaning = reader.GetBoolean(cleaningIndex)
                             });
                         }
                     }

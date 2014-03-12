@@ -24,7 +24,7 @@ namespace Booking.Pages.BookingPages
 
         public IEnumerable<Model.Booking> Unbooked1ListView_GetData()
         {
-            return Service.GetUnbooked1();
+            return Service.GetUnbooked2();
         }
     }
 }
