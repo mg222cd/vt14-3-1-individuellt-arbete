@@ -18,6 +18,12 @@ namespace Booking.Model
             get { return _customerDAL ?? (_customerDAL = new CustomerDAL()); }
         }
 
+        private BookingDAL _bookingDAL;
+        private BookingDAL BookingDAL
+        {
+            get { return _bookingDAL ?? (_bookingDAL = new BookingDAL());  }
+        }
+
         #endregion
 
         public void DeleteCustomer (int customerId)
@@ -33,6 +39,16 @@ namespace Booking.Model
         public IEnumerable<Customer> GetCustomers()
         {
             return CustomerDAL.GetCustomers();
+        }
+
+        public IEnumerable<Booking> GetUnbooked1()
+        {
+            return BookingDAL.GetUnbookedWeeksProp1();
+        }
+
+        public IEnumerable<Booking> GetUnbooked2()
+        {
+            return BookingDAL.GetUnbookedWeeksProp2();
         }
 
         public void SaveCustomer(Customer customer)

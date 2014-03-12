@@ -79,7 +79,6 @@
   <ItemGroup>
     <Content Include="Content\reset.css" />
     <Content Include="Content\site.css" />
-    <Content Include="Default.aspx" />
     <Content Include="Error.html" />
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
@@ -99,17 +98,12 @@
     <Compile Include="App_Infrastructure\MyValidationExtension.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Model\Booking.cs" />
     <Compile Include="Model\Customer.cs" />
+    <Compile Include="Model\DAL\BookingDAL.cs" />
     <Compile Include="Model\DAL\CustomerDAL.cs" />
     <Compile Include="Model\Service.cs" />
     <Compile Include="Pages\BookingPages\BookingListing.aspx.cs">

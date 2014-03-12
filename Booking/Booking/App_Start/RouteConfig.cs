@@ -12,13 +12,11 @@ namespace Booking.App_Start
         {
             //TODO Fixa alla URL:er
             //skicka med namn, url, fysiskfil(webbformuläret)
-            routes.MapPageRoute("CustomerCreate",
-                "kund/ny",
-                "~/Create.aspx");
+            //routes.MapPageRoute("CustomerCreate",
+            //    "kund/ny",
+            //    "~/Create.aspx");
 
-            routes.MapPageRoute("Default",
-                "",
-                "~/Default.aspx");
+   
 
         }
     }
