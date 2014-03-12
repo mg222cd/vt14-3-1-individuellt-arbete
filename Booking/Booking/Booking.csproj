@@ -84,6 +84,7 @@
     <Content Include="packages.config" />
     <Content Include="Pages\BookingPages\BookingListing.aspx" />
     <Content Include="Pages\CustomerPages\CustomerCrud.aspx" />
+    <Content Include="Pages\PropertyPages\PropertyCrud.aspx" />
     <Content Include="Pages\Shared\Site.Master" />
     <None Include="Properties\PublishProfiles\MyProfile.pubxml" />
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
@@ -120,6 +121,13 @@
     <Compile Include="Pages\CustomerPages\CustomerCrud.aspx.designer.cs">
       <DependentUpon>CustomerCrud.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\PropertyPages\PropertyCrud.aspx.cs">
+      <DependentUpon>PropertyCrud.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\PropertyPages\PropertyCrud.aspx.designer.cs">
+      <DependentUpon>PropertyCrud.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Shared\Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -137,9 +145,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Pages\PropertyPages\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
