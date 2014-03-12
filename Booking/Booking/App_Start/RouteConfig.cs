@@ -10,6 +10,7 @@ namespace Booking.App_Start
     {
         public static void RegisterRoutes (RouteCollection routes)
         {
+            //TODO Fixa alla URL:er
             //skicka med namn, url, fysiskfil(webbformuläret)
             routes.MapPageRoute("CustomerCreate",
                 "kund/ny",

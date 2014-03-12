@@ -83,13 +83,14 @@
     <Content Include="Error.html" />
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
-    <Content Include="Pages\BookingPages\Listing.aspx" />
+    <Content Include="Pages\BookingPages\BookingListing.aspx" />
     <Content Include="Pages\CustomerPages\CustomerCrud.aspx" />
     <Content Include="Pages\Shared\Site.Master" />
     <None Include="Properties\PublishProfiles\MyProfile.pubxml" />
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.0.js" />
     <Content Include="Scripts\jquery-2.1.0.min.js" />
+    <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\modernizr-2.7.2.js" />
     <Content Include="Web.config" />
     <Content Include="Scripts\jquery-2.1.0.min.map" />
@@ -111,12 +112,12 @@
     <Compile Include="Model\Customer.cs" />
     <Compile Include="Model\DAL\CustomerDAL.cs" />
     <Compile Include="Model\Service.cs" />
-    <Compile Include="Pages\BookingPages\Listing.aspx.cs">
-      <DependentUpon>Listing.aspx</DependentUpon>
+    <Compile Include="Pages\BookingPages\BookingListing.aspx.cs">
+      <DependentUpon>BookingListing.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\BookingPages\Listing.aspx.designer.cs">
-      <DependentUpon>Listing.aspx</DependentUpon>
+    <Compile Include="Pages\BookingPages\BookingListing.aspx.designer.cs">
+      <DependentUpon>BookingListing.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\CustomerPages\CustomerCrud.aspx.cs">
       <DependentUpon>CustomerCrud.aspx</DependentUpon>

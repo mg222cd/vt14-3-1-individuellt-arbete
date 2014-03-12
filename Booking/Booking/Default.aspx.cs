@@ -23,17 +23,17 @@
 
 //        }
 
-//       //Visa alla kunder
+//        //Visa alla kunder
 //        public IEnumerable<Customer> CustomerListView_GetData()
 //        {
 //            return Service.GetCustomers();
 //        }
 
 //        //Lägg till kund
-//        public void CustomerListView_InsertItem (Customer customer)
-//        {   
+//        public void CustomerListView_InsertItem(Customer customer)
+//        {
 //            if (ModelState.IsValid)
-//            { 
+//            {
 //                try
 //                {
 //                    Service.SaveCustomer(customer);
@@ -46,7 +46,7 @@
 //        }
 
 //        //Uppdatera kund
-//        public void CustomerListView_UpdateItem (int customerId)
+//        public void CustomerListView_UpdateItem(int customerId)
 //        {
 //            try
 //            {

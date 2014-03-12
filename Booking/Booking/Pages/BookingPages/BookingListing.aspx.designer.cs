@@ -11,7 +11,7 @@ namespace Booking.Pages.BookingPages
 {
 
 
-    public partial class Listing
+    public partial class BookingListing
     {
     }
 }

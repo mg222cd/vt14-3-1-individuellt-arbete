@@ -12,7 +12,9 @@
                 <asp:ValidationSummary ID="ValidationSummary3" runat="server" HeaderText="Fel inträffade! Korrigera och försök igen." 
                     ValidationGroup="EditGroup" ShowModelStateErrors="false"/>
                 <%--Meddelanden --%>
-                <asp:Label ID="UploadLabel" runat="server" Text="" Visible="false" CssClass="UploadLabel"></asp:Label>
+                <div class="message">
+                <asp:Label ID="UploadLabel" runat="server" Text="Test" Visible="true" CssClass="UploadLabel"></asp:Label>
+                </div>
       </div><%--.List --%>
 </asp:Content>
 
