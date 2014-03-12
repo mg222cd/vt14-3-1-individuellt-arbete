@@ -5,9 +5,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Booking</title>
-    <%: System.Web.Optimization.Styles.Render("~/Content") %>
-    <%: System.Web.Optimization.Scripts.Render("~/Scripts") %>
-
+        <link href="~/Content/reset.css" rel="stylesheet" type="text/css" />
+        <link href="~/Content/site.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <form id="theForm" runat="server">
@@ -27,11 +26,15 @@
                     </ul>
                 </div><%--#menu--%>
             </nav>
+                <%--#validering--%>
+                <asp:ContentPlaceHolder ID="ValidationContentPlaceHolder" runat="server" />
 
-                <asp:ContentPlaceHolder ID="MainContentPlaceHolder1" runat="server" />
+                <%--#menu--%>
+                <asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server" />
+
         
       </div></div><%--#wrapper & content--%>
-    </div>
+    </div><%--.container--%>
     </form>
 </body>
 </html>

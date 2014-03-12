@@ -35,6 +35,7 @@
                     ValidationGroup="InsertGroup" ShowModelStateErrors="false" />
                 <asp:ValidationSummary ID="ValidationSummary3" runat="server" HeaderText="Fel inträffade! Korrigera och försök igen." 
                     ValidationGroup="EditGroup" ShowModelStateErrors="false"/>
+            </div><%--#list--%>
 
                 <%--LISTVIEW--%>
                 <asp:ListView ID="CustomerListView" runat="server"
@@ -205,7 +206,7 @@
                     
                 </asp:ListView>
 
-            </div><%--#customers--%>
+            
         </div><%--#content--%>
     </div><%--#wrapper--%>
     </div><%--#container--%>
