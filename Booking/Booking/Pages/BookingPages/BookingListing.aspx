@@ -1,5 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Shared/Site.Master" AutoEventWireup="true" CodeBehind="BookingListing.aspx.cs" Inherits="Booking.Pages.BookingPages.BookingListing" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ValidationContentPlaceHolder" runat="server">
+
+<div id="information">
+    <p>
+    Nedan visas lediga veckor för respektive stuga. Enbart hela veckor kan bokas. Bytesdag är alltid lördag.
+    Slutstädning ingår ej i priset.
+    </p>
+</div>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
@@ -10,10 +17,9 @@
     SelectMethod="Unbooked1ListView_GetData"
     DataKeyNames="BookingID">
     <LayoutTemplate>
-        <table class="grid">
-            <h2>Lediga veckor, Stuga 1 - Lillstugan</h2>
+        <table class="maintable">
+            <h2>Stuga 1 - Lillstugan</h2>
             <tr>
-                <th>BookingID</th>
                 <th>Vecka</th>
                 <th>Pris</th>
                 <th></th>
@@ -25,18 +31,14 @@
     <ItemTemplate>
         <%--Mall för nya rader--%>
         <tr>
-            <td>
-                <asp:Label ID="BookingIDLabel" runat="server" Text='<%#: Item.BookingID %>' ></asp:Label>
-            </td>
-            <td>
+            <td class="mainlist">
                 <asp:Label ID="WeekLabel" runat="server" Text='<%#: Item.Week %>' ></asp:Label>
             </td>
-            <td>
+            <td class="mainlist">
                 <asp:Label ID="PriceLabel" runat="server" Text='<%#: Item.Price %>' ></asp:Label>
             </td>
-           
-            <td>
-                
+            <td class="mainlist">
+                <asp:LinkButton runat="server" CommandName="Insert" Text="Boka" />
             </td>
         </tr>
     </ItemTemplate>
@@ -51,16 +53,14 @@
     </table>
 </EmptyDataTemplate>
 </asp:ListView>
-
 <asp:ListView ID="Unbooked2ListView" runat="server"
     ItemType="Booking.Model.Booking"
     SelectMethod="Unbooked2ListView_GetData"
     DataKeyNames="BookingID">
     <LayoutTemplate>
-        <table class="grid">
-            <h2>Lediga veckor, Stuga 2 - Huset</h2>
+        <table class="maintable">
+            <h2>Stuga 2 - Huset</h2>
             <tr>
-                <th>BookingID</th>
                 <th>Vecka</th>
                 <th>Pris</th>
                 <th></th>
@@ -72,18 +72,14 @@
     <ItemTemplate>
         <%--Mall för nya rader--%>
         <tr>
-            <td>
-                <asp:Label ID="BookingIDLabel" runat="server" Text='<%#: Item.BookingID %>' ></asp:Label>
-            </td>
-            <td>
+            <td class="mainlist">
                 <asp:Label ID="WeekLabel" runat="server" Text='<%#: Item.Week %>' ></asp:Label>
             </td>
-            <td>
+            <td class="mainlist">
                 <asp:Label ID="PriceLabel" runat="server" Text='<%#: Item.Price %>' ></asp:Label>
             </td>
-           
-            <td>
-                
+            <td class="mainlist">
+                <asp:LinkButton runat="server" CommandName="Insert" Text="Boka" />
             </td>
         </tr>
     </ItemTemplate>

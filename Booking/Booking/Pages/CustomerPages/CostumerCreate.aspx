@@ -15,6 +15,23 @@
             <div class="editor-field">
                 <asp:TextBox ID="Name" runat="server" Text='<%# BindItem.Name %>' />
             </div>
+            <div class="editor-label">
+                <label for="Address">Adress</label>
+            </div>
+            <div class="editor-field">
+                <asp:TextBox ID="Address" runat="server" Text='<%# BindItem.Address %>' />
+            </div>
+            <div class="editor-label">
+                <label for="Postal">Postnr</label>
+            </div>
+            <div class="editor-field">
+                <asp:TextBox ID="Postal" runat="server" Text='<%# BindItem.Postal %>' />
+            </div>
+            <div class="editor-label">
+                <label for="City">Ort</label>
+            </div>
+            <div class="editor-field">
+                <asp:TextBox ID="City" runat="server" Text='<%# BindItem.City %>' />
         </InsertItemTemplate>
     </asp:FormView>
 </asp:Content>

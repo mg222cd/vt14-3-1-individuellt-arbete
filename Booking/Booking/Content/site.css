@@ -54,6 +54,12 @@ body {
     padding-bottom:10px;
 }
 
+#information{
+    font-style:italic;
+    width:600px;
+    padding-bottom:20px;
+}
+
 /*Nav*/
 nav a{
 	color:#02b4e5;
@@ -88,7 +94,7 @@ nav li a:hover, .active{
 	font-weight:bold;
 }
 
-.grid a{
+.grid a, .mainlist a{
     color:#000000;
     font-size:15px;
 }
@@ -105,20 +111,24 @@ nav li a{
 
 /*Typography*/
 
-.list h2{
+.list h2, h2{
     font-weight:bold;
     font-size:28px;
     padding-bottom:10px;
 }
 
 /*Tables*/
-table{
+table .grid{
     border-left-style:solid;
     border-left-width:thin;
     border-left-color:#000000;
     border-collapse: collapse;
     border-spacing:0px;
     width:100%;
+}
+
+table .maintable{
+    width:480px;
 }
 
 th{
@@ -129,9 +139,13 @@ th{
 td, th{
     padding: 5px; 3px;
     text-align:left;
-    vertical-align: middle;
+    
 }
 
 tr:nth-child(2n+1){
     background:rgba(2, 180, 229, 0.13);
+}
+
+.tableTwo, .tableOne{
+    float:left;
 }
