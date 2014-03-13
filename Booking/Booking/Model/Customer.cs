@@ -9,7 +9,7 @@ namespace Booking.Model
     public class Customer
     {
         //Egeneskaper som motsvarar kolumner i tabellen.
-        public int CustomerId { get; set; }
+        public int CustomerID { get; set; }
 
         [Required(ErrorMessage = "Ett namn måste anges.")]
         [StringLength(40)]

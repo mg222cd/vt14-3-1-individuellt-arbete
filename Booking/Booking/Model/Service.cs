@@ -62,7 +62,7 @@ namespace Booking.Model
                 throw ex;
             }
 
-            if (customer.CustomerId == 0)//Ny post om CustomerId är 0
+            if (customer.CustomerID == 0)//Ny post om CustomerId är 0
             {
                 CustomerDAL.InsertCustomer(customer);
             }

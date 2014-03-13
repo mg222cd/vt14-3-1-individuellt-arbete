@@ -8,7 +8,7 @@
 <asp:ListView ID="Unbooked1ListView" runat="server"
     ItemType="Booking.Model.Booking"
     SelectMethod="Unbooked1ListView_GetData"
-    DataKeyNames="BookingId">
+    DataKeyNames="BookingID">
     <LayoutTemplate>
         <table class="grid">
             <h2>Lediga veckor, Stuga 1 - Lillstugan</h2>
@@ -18,6 +18,55 @@
                 <th>Pris</th>
                 <th></th>
             </tr>
+        <%--platshållare för nya rader--%>
+        <asp:PlaceHolder ID="ItemPlaceHolder" runat="server"></asp:PlaceHolder>
+        </table>
+    </LayoutTemplate>
+    <ItemTemplate>
+        <%--Mall för nya rader--%>
+        <tr>
+            <td>
+                <asp:Label ID="BookingIDLabel" runat="server" Text='<%#: Item.BookingID %>' ></asp:Label>
+            </td>
+            <td>
+                <asp:Label ID="WeekLabel" runat="server" Text='<%#: Item.Week %>' ></asp:Label>
+            </td>
+            <td>
+                <asp:Label ID="PriceLabel" runat="server" Text='<%#: Item.Price %>' ></asp:Label>
+            </td>
+           
+            <td>
+                
+            </td>
+        </tr>
+    </ItemTemplate>
+    <EmptyDataTemplate>
+    <%-- Detta visas då uppgifter saknas i databasen. --%>
+    <table class="grid">
+        <tr>
+            <td>
+                Uppgifter saknas.
+            </td>
+        </tr>
+    </table>
+</EmptyDataTemplate>
+</asp:ListView>
+
+<asp:ListView ID="Unbooked2ListView" runat="server"
+    ItemType="Booking.Model.Booking"
+    SelectMethod="Unbooked2ListView_GetData"
+    DataKeyNames="BookingID">
+    <LayoutTemplate>
+        <table class="grid">
+            <h2>Lediga veckor, Stuga 2 - Huset</h2>
+            <tr>
+                <th>BookingID</th>
+                <th>Vecka</th>
+                <th>Pris</th>
+                <th></th>
+            </tr>
+        <%--platshållare för nya rader--%>
+        <asp:PlaceHolder ID="ItemPlaceHolder" runat="server"></asp:PlaceHolder>
         </table>
     </LayoutTemplate>
     <ItemTemplate>

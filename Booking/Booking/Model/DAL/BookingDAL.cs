@@ -68,6 +68,17 @@ namespace Booking.Model.DAL
                         var priceIndex = reader.GetOrdinal("Price");
                         var cleaningIndex = reader.GetOrdinal("Cleaning");
 
+                        /*
+                         * Booking temp = new Booking();
+                        temp.BookingID = reader.GetInt32(bookingIdIndex);
+                        temp.CustomerID = reader.GetInt32(customerIdIndex);
+                        temp.PropertyID = reader.GetInt32(propertyIdIndex);
+                        temp.Week = reader.GetInt32(weekIndex);
+                        temp.Year = reader.GetInt32(yearIndex);
+                        temp.Price = reader.GetInt32(priceIndex);
+                        //Cleaning = reader.GetBoolean(cleaningIndex)
+                         */
+
                         //läs så länge Read returnerar true
                         while (reader.Read())
                         {

@@ -47,15 +47,15 @@ namespace Booking.Pages.CustomerPages
         }
 
         //Uppdatera kund
-        public void CustomerListView_UpdateItem(int customerId)
+        public void CustomerListView_UpdateItem(int customerID)
         {
             try
             {
-                var customer = Service.GetCustomer(customerId);
+                var customer = Service.GetCustomer(customerID);
                 if (customer == null)
                 {
                     ModelState.AddModelError(String.Empty,
-                        String.Format("Kunden med kundnummer {0} hittades inte", customerId));
+                        String.Format("Kunden med kundnummer {0} hittades inte", customerID));
                 }
                 if (TryUpdateModel(customer))
                 {
@@ -70,16 +70,16 @@ namespace Booking.Pages.CustomerPages
         }
 
         //radera kund
-        public void CustomerListView_DeleteItem(int customerId)
+        public void CustomerListView_DeleteItem(int customerID)
         {
             try
             {
-                Service.DeleteCustomer(customerId);
+                Service.DeleteCustomer(customerID);
             }
             catch (Exception)
             {
 
-                ModelState.AddModelError(String.Empty, "ETt oväntat fel inträffade då kund skulle raderas");
+                ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då kund skulle raderas");
             }
         }
     }

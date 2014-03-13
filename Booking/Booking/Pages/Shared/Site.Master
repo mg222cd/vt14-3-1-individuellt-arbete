@@ -21,7 +21,7 @@
             <nav>
                 <div id="menu">
                     <ul>
-                        <li><a href="../BookingPages/Listing.aspx">bokning</a></li>
+                        <li><a href="../BookingPages/BookingListing.aspx">bokning</a></li>
                         <li><a href="#">administrera bokningar</a></li>
                         <li><a href="../CustomerPages/CustomerCrud.aspx">administrera kunder</a></li>
                         <li><a href="../PropertyPages/PropertyCrud.aspx">administrera stugor</a></li>

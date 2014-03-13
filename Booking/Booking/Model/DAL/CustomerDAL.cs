@@ -60,7 +60,7 @@ namespace Booking.Model.DAL
 
                     using (var reader = cmd.ExecuteReader())
                     {
-                        var customerIdIndex = reader.GetOrdinal("CustomerId"); //returnerar heltal (med index tror jag)
+                        var customerIdIndex = reader.GetOrdinal("CustomerID"); //returnerar heltal (med index tror jag)
                         var nameIndex = reader.GetOrdinal("Name"); //efterfrågas kolumn med namn som ej existerar kastas ett undantag
                         var addressIndex = reader.GetOrdinal("address");
                         var postalIndex = reader.GetOrdinal("postal");
@@ -74,7 +74,7 @@ namespace Booking.Model.DAL
                             //samlingsobjekt av typen List
                             customers.Add(new Customer
                             {
-                                CustomerId = reader.GetInt32(customerIdIndex), //varje post översätts till ett C#-objekt av typen Customer
+                                CustomerID = reader.GetInt32(customerIdIndex), //varje post översätts till ett C#-objekt av typen Customer
                                 Name = reader.GetString(nameIndex),
                                 Address = reader.GetString(addressIndex),
                                 Postal = reader.GetString(postalIndex),
@@ -127,7 +127,7 @@ namespace Booking.Model.DAL
                         {
                             return new Customer
                             {
-                                CustomerId = reader.GetInt32(customerIdIndex), //översätts till ett C#-objekt av typen Customer
+                                CustomerID = reader.GetInt32(customerIdIndex), //översätts till ett C#-objekt av typen Customer
                                 Name = reader.GetString(nameIndex),
                                 Address = reader.GetString(addressIndex),
                                 Postal = reader.GetString(postalIndex),
@@ -174,7 +174,7 @@ namespace Booking.Model.DAL
                     cmd.ExecuteNonQuery();
 
                     //metod för att exec lagrade proceduren
-                    customer.CustomerId = (int)cmd.Parameters["@CustomerId"].Value;
+                    customer.CustomerID = (int)cmd.Parameters["@CustomerId"].Value;
 
                 }
                 catch
@@ -195,7 +195,7 @@ namespace Booking.Model.DAL
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     //lägger till parametrar
-                    cmd.Parameters.Add("@CustomerID", SqlDbType.Int, 4).Value = customer.CustomerId;
+                    cmd.Parameters.Add("@CustomerID", SqlDbType.Int, 4).Value = customer.CustomerID;
                     cmd.Parameters.Add("@Name", SqlDbType.VarChar, 40).Value = customer.Name;
                     cmd.Parameters.Add("@Address", SqlDbType.VarChar, 40).Value = customer.Address;
                     cmd.Parameters.Add("@Postal", SqlDbType.VarChar, 6).Value = customer.Postal;
