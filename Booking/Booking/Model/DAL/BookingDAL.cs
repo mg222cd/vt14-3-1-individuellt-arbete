@@ -168,6 +168,59 @@ namespace Booking.Model.DAL
             }
         }
 
+        //Metod för att hämta BookingID
+        public Booking GetBookingById(int BookingID)
+        {
+            using (var conn = CreateConnection())
+            {
+                try
+                {
+                    //kommande för lagrad procedur
+                    var cmd = new SqlCommand("[appSchema].[usp_GetBookingById]", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    //skickar med bokningsid till lagrade proceduren
+                    cmd.Parameters.Add("@BookingID", SqlDbType.Int, 4).Value = BookingID;
+
+                    //öppna databasanslutningen:
+                    conn.Open();
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        //lägger till heltal med index
+                        var bookingIdIndex = reader.GetOrdinal("BookingID");
+                        var customerIdIndex = reader.GetOrdinal("CustomerID");
+                        var propertyIdIndex = reader.GetOrdinal("PropertyID");
+                        var weekIndex = reader.GetOrdinal("Week");
+                        var yearIndex = reader.GetOrdinal("Year");
+                        var priceIndex = reader.GetOrdinal("Price");
+                        var cleaningIndex = reader.GetOrdinal("Cleaning");
+
+                        if (reader.Read())
+                        {
+                            return new Booking
+                            {
+                                BookingID = reader.GetInt32(bookingIdIndex),
+                                CustomerID = reader.GetInt32(customerIdIndex),
+                                PropertyID = reader.GetInt32(propertyIdIndex),
+                                Week = reader.GetInt32(weekIndex),
+                                Year = reader.GetInt32(yearIndex),
+                                Price = reader.GetInt32(priceIndex),
+                                Cleaning = reader.GetBoolean(cleaningIndex)
+                            };
+                        }
+                        //om id:t inte skulle finnas
+                        return null;
+                    }
+                }
+                catch
+                {
+
+                    throw new ApplicationException("Fel uppstod i samband med hämtning av bokningsid ur databasen.");
+                }
+                
+            }
+        }
+
         #endregion
     }
 }
