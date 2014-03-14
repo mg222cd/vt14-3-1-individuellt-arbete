@@ -63,7 +63,8 @@
         </div>
         <div id="buttons">
         <asp:Button ID="CommitButton" runat="server" Text="Bekräfta" CommandName="Insert" />
-        <asp:Button ID="BreakButton" runat="server" Text="Avbryt" />
+        <asp:Button ID="BreakButton" runat="server" Text="Avbryt"
+            OnClientClick='<%# String.Format("return confirm(\"Vill du verkligen avbryta bokningen?\")") %>' />
         </div>
         </fieldset>
     </InsertItemTemplate>
@@ -98,7 +99,7 @@
                 <asp:Label ID="PriceLabel" runat="server" Text='<%#: Item.Price %>' ></asp:Label>
             </td>
             <td class="mainlist">
-                <asp:LinkButton runat="server" Text="Boka" CommandName="Edit" />
+                <asp:LinkButton runat="server" Text="Boka" CommandName="Edit" OnClick="Unnamed_Click" />
             </td>
         </tr>
     </ItemTemplate>
@@ -141,7 +142,7 @@
                 <asp:Label ID="PriceLabel" runat="server" Text='<%#: Item.Price %>' ></asp:Label>
             </td>
             <td class="mainlist">
-                <asp:LinkButton runat="server" Text="Boka" CommandName="edit" />
+                <asp:LinkButton runat="server" Text="Boka" CommandName="edit" OnClick="Unnamed_Click" />
             </td>
         </tr>
     </ItemTemplate>

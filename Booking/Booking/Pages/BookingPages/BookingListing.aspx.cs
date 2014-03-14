@@ -35,21 +35,22 @@ namespace Booking.Pages.BookingPages
         }
 
 
-        public void Unbooked1ListView_EditItem(int customerID)
+        public void Unbooked1ListView_EditItem(int BookingID)
         {
             //spara bokningsinformation
             var booking = Service.GetBooking(BookingID);
-            //visar kundbokning
-            CustomerFormView.Visible = true;
-            //Ta bort bokningslistor
-            Unbooked1ListView.Visible = false;
-            Unbooked2ListView.Visible = false;
         }
 
-        public void Unbooked2ListView_EditItem(int customerID)
+        public void Unbooked2ListView_EditItem(int BookingID)
         {
             //spara bokningsinformation
             var booking = Service.GetBooking(BookingID);
+            //BookingLiteral.Text= String.Format(Service.GetBooking(BookingID))
+            //ResultLiteral.Text = String.Format(ResultLiteral.Text, answer);
+        }
+
+        protected void Unnamed_Click(object sender, EventArgs e)
+        {
             //visar kundbokning
             CustomerFormView.Visible = true;
             //Ta bort bokningslistor
