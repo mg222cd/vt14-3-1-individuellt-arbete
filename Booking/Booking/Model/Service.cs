@@ -38,8 +38,7 @@ namespace Booking.Model
 
         public Booking GetBooking(int BookingID)
         {
-            return null;
-            //TODO return CustomerDAL.GetCustomerById(customerId); fast med Booking
+            return BookingDAL.GetBookingById(BookingID);
         }
 
         public IEnumerable<Customer> GetCustomers()

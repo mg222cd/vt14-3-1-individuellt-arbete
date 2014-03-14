@@ -34,16 +34,33 @@ namespace Booking.Pages.BookingPages
             return Service.GetUnbooked2();
         }
 
-        //När man trycker BOKA
-        protected void Unnamed_Click(object sender, EventArgs e)
+
+        public void Unbooked1ListView_EditItem(int customerID)
         {
-            //hämta bokningsID mm för vald post
-
-
+            //spara bokningsinformation
+            var booking = Service.GetBooking(BookingID);
+            //visar kundbokning
+            CustomerFormView.Visible = true;
+            //Ta bort bokningslistor
+            Unbooked1ListView.Visible = false;
+            Unbooked2ListView.Visible = false;
         }
 
-        
+        public void Unbooked2ListView_EditItem(int customerID)
+        {
+            //spara bokningsinformation
+            var booking = Service.GetBooking(BookingID);
+            //visar kundbokning
+            CustomerFormView.Visible = true;
+            //Ta bort bokningslistor
+            Unbooked1ListView.Visible = false;
+            Unbooked2ListView.Visible = false;
+        }
 
-        
+
+
+
+
+
     }
 }
