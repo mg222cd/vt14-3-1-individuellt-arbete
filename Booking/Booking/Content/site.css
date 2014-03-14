@@ -94,7 +94,7 @@ nav li a:hover, .active{
 	font-weight:bold;
 }
 
-.grid a, .mainlist a{
+.grid a, .mainlist a, #wrapper a{
     color:#000000;
     font-size:15px;
 }
@@ -117,6 +117,12 @@ nav li a{
     padding-bottom:10px;
 }
 
+.th_header{
+    font-weight:bold;
+    font-size:18px;
+    padding-bottom:10px;
+}
+
 /*Tables*/
 table .grid{
     border-left-style:solid;
@@ -127,9 +133,6 @@ table .grid{
     width:100%;
 }
 
-table .maintable{
-    width:480px;
-}
 
 th{
     background:#FFFFFF;
@@ -148,4 +151,41 @@ tr:nth-child(2n+1){
 
 .tableTwo, .tableOne{
     float:left;
+}
+
+.maintable{
+    padding-right:20px;
+    width:300px;
+    float:left;
+}
+
+/*Forms*/
+
+.bookingLiteralText{
+    font-weight:bold;
+}
+
+.bookingLiteralTextLast{
+    font-weight:bold;
+    padding-bottom:10px;
+}
+
+fieldset{
+    width:570px;
+}
+
+form .editor-label{
+    margin: 0 0 .1em 0;
+}
+
+form .editor-field{
+    margin: 0 0 1em 0;
+}
+
+input[type=text]{
+    width:80%;
+}
+
+#buttons{
+    float:right;
 }
