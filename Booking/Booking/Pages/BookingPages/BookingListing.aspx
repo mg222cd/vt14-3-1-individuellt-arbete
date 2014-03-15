@@ -114,7 +114,7 @@
 </asp:ListView>
 <asp:ListView ID="Unbooked2ListView" runat="server"
     ItemType="Booking.Model.Booking"
-    SelectMethod="Unbooked1ListView_GetData"
+    SelectMethod="Unbooked2ListView_GetData"
     DataKeyNames="BookingID"
     Visible="true" >
     <LayoutTemplate>

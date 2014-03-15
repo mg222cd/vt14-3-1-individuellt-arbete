@@ -239,7 +239,7 @@ namespace Booking.Model.DAL
                 catch (Exception)
                 {
 
-                    throw new ApplicationException("Fel uppstod då kund skulle raderas");
+                    throw new ApplicationException("Fel uppstod då kund skulle raderas. Kontrollera att kund inte har bokningar. Isåfall - radera först dessa och försök sedan igen.");
                 }
             }
         }

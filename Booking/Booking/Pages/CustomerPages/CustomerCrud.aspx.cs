@@ -79,7 +79,7 @@ namespace Booking.Pages.CustomerPages
             catch (Exception)
             {
 
-                ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då kund skulle raderas");
+                ModelState.AddModelError(String.Empty, "Fel uppstod då kund skulle raderas. Kontrollera att kund inte har bokningar. Isåfall - radera först dessa och försök sedan igen.");
             }
         }
     }

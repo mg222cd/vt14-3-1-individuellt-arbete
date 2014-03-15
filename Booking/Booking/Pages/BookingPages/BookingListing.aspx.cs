@@ -23,7 +23,7 @@ namespace Booking.Pages.BookingPages
             //Vid PageLoad initieras ny Session
             if (!IsPostBack)
             {
-                Session["bookingID"] = 0;
+                Session["BookingId"] = 0;
             }
         }
 
@@ -41,9 +41,10 @@ namespace Booking.Pages.BookingPages
 
         protected void booking_Command(object sender, CommandEventArgs e)
         {
-            //spara undan data för vald post
+            //sparar bokningsid för vald post i sessionsvariabeln
             int bookingID = int.Parse((string)e.CommandArgument);
-            Session["bookingID"] = bookingID;
+            Session["BookingId"] = ((int?)Session["BookingId"] ?? 0);
+            Session["BookingId"] = bookingID;
             //visar kundbokning
             CustomerFormView.Visible = true;
             //Ta bort bokningslistor
@@ -57,8 +58,9 @@ namespace Booking.Pages.BookingPages
                 try
                 {
                     //hitta bokningsid
-                    var bookingIdObject = Session["bookingID"];
-                    Service.SaveCustomerAndUpdateBooking(1, customer);
+                    int bookingId = ((int?)Session["BookingId"] ?? 0);
+                    //infoga och uppdatera
+                    Service.SaveCustomerAndUpdateBooking(bookingId, customer);
                 }
                 catch (Exception)
                 {
