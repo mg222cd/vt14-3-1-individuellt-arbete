@@ -1,12 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Shared/Site.Master" AutoEventWireup="true" CodeBehind="BookingListing.aspx.cs" Inherits="Booking.Pages.BookingPages.BookingListing" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ValidationContentPlaceHolder" runat="server">
-
-<div id="information">
-    <p>
-    Nedan visas bokningsbara veckor för respektive stuga. Enbart hela veckor kan bokas. Bytesdag är alltid lördag.
-    Slutstädning ingår ej i priset.
-    </p>
-</div>
+<%--Header, Validering och meddelanden --%>
+    <div class="list">
+            <%--Meddelanden --%>
+            <div class="message">
+            <asp:Label ID="MessageLabel" runat="server" Text="Nedan visas bokningsbara veckor för respektive stuga. 
+                Enbart hela veckor kan bokas. Bytesdag är alltid lördag. Slutstädning ingår ej i priset." 
+                Visible="true" CssClass="UploadLabel"></asp:Label>
+            </div>
+            <%--Validation Summary--%>
+    </div>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
@@ -18,11 +21,9 @@
     Visible="false">
     <InsertItemTemplate>
         <%--Informationstext--%>
-        <asp:Literal ID="BookingLiteral" runat="server">
-            <div id="bookingLiteralDiv">
-            <p class="bookingLiteralTextLast">Var god fyll i dina kontaktuppgifter nedan.</p>
-            </div>
-        </asp:Literal>
+        <div class="message">
+            <asp:Literal ID="InfoLiteral" runat="server">Bokning av {0} vecka {1} år {2}. Pris {3}</asp:Literal>
+        </div>
         <fieldset>
         <div class="editor-label">
             <label for="Name">Namn</label>

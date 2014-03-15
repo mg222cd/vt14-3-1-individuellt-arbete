@@ -50,6 +50,10 @@ namespace Booking.Pages.BookingPages
             //Ta bort bokningslistor
             Unbooked1ListView.Visible = false;
             Unbooked2ListView.Visible = false;
+            //Information att använda i bekräftelsetext
+            Model.Booking bookingObject = new Model.Booking();
+            bookingObject = Service.GetBooking(bookingID);
+            //lägg till och visa infotext om bokning.
         }
 
         //Infoga ny kund och uppdatera bokning

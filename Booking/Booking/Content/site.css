@@ -109,6 +109,10 @@ nav li a{
     float:left;
 }
 
+.message{
+    width:570px;
+}
+
 /*Typography*/
 
 .list h2, h2{
