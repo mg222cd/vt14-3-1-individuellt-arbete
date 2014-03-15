@@ -161,11 +161,7 @@ tr:nth-child(2n+1){
 
 /*Forms*/
 
-.bookingLiteralText{
-    font-weight:bold;
-}
-
-.bookingLiteralTextLast{
+.bookingLiteralDiv{
     font-weight:bold;
     padding-bottom:10px;
 }

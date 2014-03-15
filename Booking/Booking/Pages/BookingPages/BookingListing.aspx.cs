@@ -16,10 +16,15 @@ namespace Booking.Pages.BookingPages
         {
             get { return _service ?? (_service = new Service());  }
         }
+        
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //Vid PageLoad initieras ny Session
+            if (!IsPostBack)
+            {
+                Session["bookingID"] = 0;
+            }
         }
 
         //Hämta lista tabell 1
@@ -28,36 +33,46 @@ namespace Booking.Pages.BookingPages
             return Service.GetUnbooked1();
         }
 
-        //Hämta lista tabell 1
+        //Hämta lista tabell 2
         public IEnumerable<Model.Booking> Unbooked2ListView_GetData()
         {
             return Service.GetUnbooked2();
         }
 
-
-        public void Unbooked1ListView_EditItem(int BookingID)
+        protected void booking_Command(object sender, CommandEventArgs e)
         {
-            //spara bokningsinformation
-            var booking = Service.GetBooking(BookingID);
-        }
-
-        public void Unbooked2ListView_EditItem(int BookingID)
-        {
-            //spara bokningsinformation
-            var booking = Service.GetBooking(BookingID);
-            //BookingLiteral.Text= String.Format(Service.GetBooking(BookingID))
-            //ResultLiteral.Text = String.Format(ResultLiteral.Text, answer);
-        }
-
-        protected void Unnamed_Click(object sender, EventArgs e)
-        {
+            //spara undan data för vald post
+            int bookingID = int.Parse((string)e.CommandArgument);
+            Session["bookingID"] = bookingID;
             //visar kundbokning
             CustomerFormView.Visible = true;
+
             //Ta bort bokningslistor
             Unbooked1ListView.Visible = false;
             Unbooked2ListView.Visible = false;
         }
 
+        //Infoga ny kund och uppdatera
+        //"CustomerFormView_InsertItem"
+        public void CustomerFormView_InsertItem(Customer customer)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    //hitta bokningsid
+                    var bookingID = Session["bookingID"];
+                    Service.SaveCustomer(customer);
+                }
+                catch (Exception)
+                {
+                    ModelState.AddModelError(String.Empty, "Ett fel uppstod då kund skulle läggas till.");
+                }
+            }
+        }
+
+
+        
 
 
 

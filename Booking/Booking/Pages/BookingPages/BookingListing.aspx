@@ -74,7 +74,6 @@
 <asp:ListView ID="Unbooked1ListView" runat="server"
     ItemType="Booking.Model.Booking"
     SelectMethod="Unbooked1ListView_GetData"
-    UpdateMethod="Unbooked2ListView_UpdateItem"
     DataKeyNames="BookingID" 
     Visible="true">
     <LayoutTemplate>
@@ -99,7 +98,7 @@
                 <asp:Label ID="PriceLabel" runat="server" Text='<%#: Item.Price %>' ></asp:Label>
             </td>
             <td class="mainlist">
-                <asp:LinkButton runat="server" Text="Boka" CommandName="Edit" OnClick="Unnamed_Click" />
+                <asp:LinkButton runat="server" Text="Boka" OnCommand="booking_Command" CommandArgument='<%#: Item.BookingID %>' />
             </td>
         </tr>
     </ItemTemplate>
@@ -116,8 +115,7 @@
 </asp:ListView>
 <asp:ListView ID="Unbooked2ListView" runat="server"
     ItemType="Booking.Model.Booking"
-    SelectMethod="Unbooked2ListView_GetData"
-    UpdateMethod="Unbooked2ListView_UpdateItem"
+    SelectMethod="Unbooked1ListView_GetData"
     DataKeyNames="BookingID"
     Visible="true" >
     <LayoutTemplate>
@@ -142,7 +140,7 @@
                 <asp:Label ID="PriceLabel" runat="server" Text='<%#: Item.Price %>' ></asp:Label>
             </td>
             <td class="mainlist">
-                <asp:LinkButton runat="server" Text="Boka" CommandName="edit" OnClick="Unnamed_Click" />
+                <asp:LinkButton runat="server" Text="Boka" OnCommand="booking_Command" CommandArgument='<%#: Item.BookingID %>' />
             </td>
         </tr>
     </ItemTemplate>
