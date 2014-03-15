@@ -107,6 +107,8 @@
     <Compile Include="Model\Customer.cs" />
     <Compile Include="Model\DAL\BookingDAL.cs" />
     <Compile Include="Model\DAL\CustomerDAL.cs" />
+    <Compile Include="Model\DAL\PropertyDAL.cs" />
+    <Compile Include="Model\Property.cs" />
     <Compile Include="Model\Service.cs" />
     <Compile Include="Pages\BookingPages\BookingListing.aspx.cs">
       <DependentUpon>BookingListing.aspx</DependentUpon>
