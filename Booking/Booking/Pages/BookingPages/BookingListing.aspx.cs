@@ -46,29 +46,24 @@ namespace Booking.Pages.BookingPages
             Session["bookingID"] = bookingID;
             //visar kundbokning
             CustomerFormView.Visible = true;
-
             //Ta bort bokningslistor
             Unbooked1ListView.Visible = false;
             Unbooked2ListView.Visible = false;
         }
 
-        //Infoga ny kund och uppdatera
-        //"CustomerFormView_InsertItem"
+        //Infoga ny kund och uppdatera bokning
         public void CustomerFormView_InsertItem(Customer customer)
         {
-            if (ModelState.IsValid)
-            {
                 try
                 {
                     //hitta bokningsid
-                    var bookingID = Session["bookingID"];
-                    Service.SaveCustomer(customer);
+                    var bookingIdObject = Session["bookingID"];
+                    Service.SaveCustomerAndUpdateBooking(1, customer);
                 }
                 catch (Exception)
                 {
                     ModelState.AddModelError(String.Empty, "Ett fel uppstod då kund skulle läggas till.");
                 }
-            }
         }
 
 

@@ -36,9 +36,9 @@ namespace Booking.Model
             return CustomerDAL.GetCustomerById(customerId);
         }
 
-        public Booking GetBooking(int BookingID)
+        public Booking GetBooking(int bookingID)
         {
-            return BookingDAL.GetBookingById(BookingID);
+            return BookingDAL.GetBookingById(bookingID);
         }
 
         public IEnumerable<Customer> GetCustomers()
@@ -75,6 +75,11 @@ namespace Booking.Model
             {
                 CustomerDAL.UpdateCustomer(customer);
             }
+        }
+
+        public void SaveCustomerAndUpdateBooking (int bookingID, Customer customer)
+        {
+            BookingDAL.InsertCustomerAndUpdateBooking(bookingID, customer);
         }
 
 

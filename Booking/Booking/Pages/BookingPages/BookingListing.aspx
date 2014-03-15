@@ -20,7 +20,6 @@
         <%--Informationstext--%>
         <asp:Literal ID="BookingLiteral" runat="server">
             <div id="bookingLiteralDiv">
-            <p class="bookingLiteralText">Bokning av {0} vecka {1} {2}. Pris {3}.</p> 
             <p class="bookingLiteralTextLast">Var god fyll i dina kontaktuppgifter nedan.</p>
             </div>
         </asp:Literal>

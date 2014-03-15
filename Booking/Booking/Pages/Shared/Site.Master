@@ -8,7 +8,7 @@
         <link href="~/Content/reset.css" rel="stylesheet" type="text/css" />
         <link href="~/Content/site.css" rel="stylesheet" type="text/css" />
         <%: System.Web.Optimization.Scripts.Render("http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js") %>
-        <%: System.Web.Optimization.Scripts.Render("~/Scripts/jquery.js") %>
+
 </head>
 <body>
     <form id="theForm" runat="server">
