@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Configuration;
+using System.Data;
 
 namespace Booking.Model.DAL
 {
@@ -39,61 +40,51 @@ namespace Booking.Model.DAL
 
         #region CRUD-metoder
 
-        //public IEnumerable<Customer> GetCustomers()
-        //{
-        //    //skapa och initiera anslutningsobjekt
-        //    using (var conn = CreateConnection())
-        //    {
-        //        try
-        //        {
-        //            //skapar lista (man bör veta ungefärlig storlek)
-        //            var customers = new List<Customer>(100);
+        public IEnumerable<Property> GetProperties()
+        {
+            //skapa anslutningsobj
+            using (var conn = CreateConnection())
+            {
+                try
+                {
+                    //skapa lista
+                    var properties = new List<Property>(100);
 
-        //            //kommando för att exec lagrad procedur
-        //            var cmd = new SqlCommand("[appSchema].[usp_GetCustomers]", conn);
-        //            cmd.CommandType = CommandType.StoredProcedure;
+                    //kommand för lagrad procedur
+                    var cmd = new SqlCommand("[appSchema].[usp_GetProperties]", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
 
-        //            //öppna anslutning till databasen
-        //            conn.Open();
+                    //Öppna anslutning till databas
+                    conn.Open();
 
-        //            using (var reader = cmd.ExecuteReader())
-        //            {
-        //                var customerIdIndex = reader.GetOrdinal("CustomerID"); //returnerar heltal (med index tror jag)
-        //                var nameIndex = reader.GetOrdinal("Name"); //efterfrågas kolumn med namn som ej existerar kastas ett undantag
-        //                var addressIndex = reader.GetOrdinal("address");
-        //                var postalIndex = reader.GetOrdinal("postal");
-        //                var cityIndex = reader.GetOrdinal("city");
-        //                var phoneIndex = reader.GetOrdinal("Phone");
-        //                var emailIndex = reader.GetOrdinal("Email");
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        //hämtar index:
+                        var propertyIdIndex = reader.GetOrdinal("PropertyID");
+                        var propertyNameIndex = reader.GetOrdinal("PropertyName");
 
-        //                //läs post för post, så länge Read returnerar True
-        //                while (reader.Read())
-        //                {
-        //                    //samlingsobjekt av typen List
-        //                    customers.Add(new Customer
-        //                    {
-        //                        CustomerID = reader.GetInt32(customerIdIndex), //varje post översätts till ett C#-objekt av typen Customer
-        //                        Name = reader.GetString(nameIndex),
-        //                        Address = reader.GetString(addressIndex),
-        //                        Postal = reader.GetString(postalIndex),
-        //                        City = reader.GetString(cityIndex),
-        //                        Phone = reader.GetString(phoneIndex),
-        //                        Email = reader.GetString(emailIndex)
-        //                    });
-        //                }
-        //            }
-
-        //            customers.TrimExcess();
-
-        //            return customers;
-
-        //        }
-        //        catch
-        //        {
-        //            throw new ApplicationException("Fel uppstod i samband med hämtning av kunder från databasen");
-        //        }
-        //    }
-        //}
+                        //läs post för post, så länge Read returnerar True
+                        while (reader.Read())
+                        {
+                            //samlingsobjekt
+                            properties.Add(new Property
+                            {
+                                PropertyID = reader.GetInt32(propertyIdIndex),
+                                PropertyName = reader.GetString(propertyNameIndex)
+                            });
+                        }
+                    }
+                    //trimma ner och returnera lista
+                    properties.TrimExcess();
+                    return properties;
+                }
+                catch
+                {
+                    
+                    throw new ApplicationException("Fel uppstod vid hämtning av stugor från databasen");
+                }
+            }
+        }
 
         //public Customer GetCustomerById(int customerId)
         //{

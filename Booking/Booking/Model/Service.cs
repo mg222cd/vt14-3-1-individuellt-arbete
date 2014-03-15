@@ -10,18 +10,27 @@ namespace Booking.Model
     //Serviceklass som "pratar med " dataåtkomstklassen
     public class Service
     {
-        #region privat egenskap som initierar customerDAL-objekt i varje metod i klassen
+        #region tabellDAL-objekt att använda i klassens metoder
 
+        //customer
         private CustomerDAL _customerDAL;
         private CustomerDAL CustomerDAL
         {
             get { return _customerDAL ?? (_customerDAL = new CustomerDAL()); }
         }
 
+        //booking
         private BookingDAL _bookingDAL;
         private BookingDAL BookingDAL
         {
             get { return _bookingDAL ?? (_bookingDAL = new BookingDAL());  }
+        }
+
+        //property
+        private PropertyDAL _propertyDAL;
+        private PropertyDAL PropertyDAL
+        {
+            get { return _propertyDAL ?? (_propertyDAL = new PropertyDAL()); }
         }
 
         #endregion
@@ -41,9 +50,16 @@ namespace Booking.Model
             return BookingDAL.GetBookingById(bookingID);
         }
 
+        #region List-metoder
+
         public IEnumerable<Customer> GetCustomers()
         {
             return CustomerDAL.GetCustomers();
+        }
+
+        public IEnumerable<Property> GetProperties()
+        {
+            return PropertyDAL.GetProperties();
         }
 
         public IEnumerable<Booking> GetUnbooked1()
@@ -55,6 +71,8 @@ namespace Booking.Model
         {
             return BookingDAL.GetUnbookedWeeksProp2();
         }
+
+        #endregion
 
         public void SaveCustomer(Customer customer)
         {
