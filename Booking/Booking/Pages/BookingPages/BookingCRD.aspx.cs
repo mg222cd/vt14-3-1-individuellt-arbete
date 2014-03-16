@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Booking.Model;
+using System.Web.ModelBinding;
 
 namespace Booking.Pages.BookingPages
 {
@@ -27,5 +28,37 @@ namespace Booking.Pages.BookingPages
         {
             return Service.GetAllBookings();
         }
+
+        //Radera bokning
+        public void BookingListView_DeleteItem(int bookingId)
+        {
+            try
+            {
+                Service.DeleteBooking(bookingId);
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError(String.Empty, "Fel uppstod då bokning skulle raderas.");
+            }
+        }
+
+
+        protected void BookingListView_ItemDataBound(object sender, ListViewItemEventArgs e)
+        {
+            var bookingInfo = (Booking.Model.Booking)e.Item.DataItem;
+            
+            if (bookingInfo != null)
+            {
+                //lägger till stugnamn istället för id
+                var property = Service.GetProperty(bookingInfo.PropertyID);
+                var propertyIdLabel = e.Item.FindControl("PropertyIDLabel") as Label;
+                propertyIdLabel.Text = String.Format("{0}", property.PropertyName);
+                //lägger till kundnamn istället för id
+                var customer = Service.GetCustomer(bookingInfo.CustomerID);
+                var customerIdLabel = e.Item.FindControl("CustomerIDLabel") as Label;
+                customerIdLabel.Text = String.Format("{0}", customer.Name);
+            }
+        }
+
     }
 }

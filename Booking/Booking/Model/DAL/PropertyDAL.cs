@@ -86,54 +86,46 @@ namespace Booking.Model.DAL
             }
         }
 
-        //public Customer GetCustomerById(int customerId)
-        //{
-        //    //skapa och initiera anslutningsobjekt
-        //    using (var conn = CreateConnection())
-        //    {
-        //        try
-        //        {
-        //            //kommando för att exec lagrad procedur
-        //            var cmd = new SqlCommand("[appSchema].[usp_GetCustomerById]", conn);
-        //            cmd.CommandType = CommandType.StoredProcedure;
-        //            //skickar med kundId till lagrade proceduren
-        //            cmd.Parameters.Add("@CustomerID", SqlDbType.Int, 4).Value = customerId;
+        public Property GetPropertyById(int propertyId)
+        {
+            //skapa och initiera anslutningsobjekt
+            using (var conn = CreateConnection())
+            {
+                try
+                {
+                    //kommando för att exec lagrad procedur
+                    var cmd = new SqlCommand("[appSchema].[usp_GetPropertyById]", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    //skickar med kundId till lagrade proceduren
+                    cmd.Parameters.Add("@PropertyID", SqlDbType.Int, 4).Value = propertyId;
 
-        //            //öppna anslutning till databasen
-        //            conn.Open();
+                    //öppna anslutning till databasen
+                    conn.Open();
 
-        //            using (var reader = cmd.ExecuteReader())
-        //            {
-        //                var customerIdIndex = reader.GetOrdinal("CustomerId"); //returnerar heltal (med index tror jag)
-        //                var nameIndex = reader.GetOrdinal("Name"); //efterfrågas kolumn med namn som ej existerar kastas ett undantag
-        //                var addressIndex = reader.GetOrdinal("address");
-        //                var postalIndex = reader.GetOrdinal("postal");
-        //                var cityIndex = reader.GetOrdinal("city");
-        //                var phoneIndex = reader.GetOrdinal("Phone");
-        //                var emailIndex = reader.GetOrdinal("Email");
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        //hämta index
+                        var propertyIdIndex = reader.GetOrdinal("PropertyID"); 
+                        var propertyNameIndex = reader.GetOrdinal("PropertyName"); 
 
-        //                if (reader.Read())
-        //                {
-        //                    return new Customer
-        //                    {
-        //                        CustomerID = reader.GetInt32(customerIdIndex), //översätts till ett C#-objekt av typen Customer
-        //                        Name = reader.GetString(nameIndex),
-        //                        Address = reader.GetString(addressIndex),
-        //                        Postal = reader.GetString(postalIndex),
-        //                        City = reader.GetString(cityIndex),
-        //                        Phone = reader.GetString(phoneIndex),
-        //                        Email = reader.GetString(phoneIndex)
-        //                    };
-        //                }
-        //                return null;
-        //            }
-        //        }
-        //        catch
-        //        {
-        //            throw new ApplicationException("Fel uppstod i samband med hämtning av kunder från databasen");
-        //        }
-        //    }
-        //}
+                        if (reader.Read())
+                        {
+                            return new Property
+                            {
+                                //lägger till värdet från databasen i objektegenskaperna
+                                PropertyID = reader.GetInt32(propertyIdIndex),
+                                PropertyName = reader.GetString(propertyNameIndex)
+                            };
+                        }
+                        return null;
+                    }
+                }
+                catch
+                {
+                    throw new ApplicationException("Fel uppstod i samband med hämtning av kunder från databasen");
+                }
+            }
+        }
 
         //public void InsertCustomer(Customer customer)
         //{

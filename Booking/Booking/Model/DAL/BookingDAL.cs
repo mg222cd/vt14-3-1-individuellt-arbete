@@ -66,7 +66,6 @@ namespace Booking.Model.DAL
                         var weekIndex = reader.GetOrdinal("Week");
                         var yearIndex = reader.GetOrdinal("Year");
                         var priceIndex = reader.GetOrdinal("Price");
-                        var cleaningIndex = reader.GetOrdinal("Cleaning");
 
                         /* TODO: Radera detta när vi vet att allt funkar.
                          * Booking temp = new Booking();
@@ -92,7 +91,6 @@ namespace Booking.Model.DAL
                                 Week = reader.GetInt32(weekIndex),
                                 Year = reader.GetInt32(yearIndex),
                                 Price = reader.GetInt32(priceIndex),
-                                Cleaning = reader.GetBoolean(cleaningIndex)
                             });
                         }
                     }
@@ -136,7 +134,6 @@ namespace Booking.Model.DAL
                         var weekIndex = reader.GetOrdinal("Week");
                         var yearIndex = reader.GetOrdinal("Year");
                         var priceIndex = reader.GetOrdinal("Price");
-                        var cleaningIndex = reader.GetOrdinal("Cleaning");
 
                         //läs så länge Read returnerar true
                         while (reader.Read())
@@ -151,7 +148,6 @@ namespace Booking.Model.DAL
                                 Week = reader.GetInt32(weekIndex),
                                 Year = reader.GetInt32(yearIndex),
                                 Price = reader.GetInt32(priceIndex),
-                                Cleaning = reader.GetBoolean(cleaningIndex)
                             });
                         }
                     }
@@ -168,7 +164,7 @@ namespace Booking.Model.DAL
             }
         }
 
-        //Metod för at hämta alla bokningar
+        //Metod för att lista alla bokningar
         public IEnumerable<Booking> GetAllBookings()
         {
             //anslutningsobjekt
@@ -195,7 +191,6 @@ namespace Booking.Model.DAL
                         var weekIndex = reader.GetOrdinal("Week");
                         var yearIndex = reader.GetOrdinal("Year");
                         var priceIndex = reader.GetOrdinal("Price");
-                        var cleaningIndex = reader.GetOrdinal("Cleaning");
 
                         //läs så länge Read returnerar true
                         while (reader.Read())
@@ -210,7 +205,6 @@ namespace Booking.Model.DAL
                                 Week = reader.GetInt32(weekIndex),
                                 Year = reader.GetInt32(yearIndex),
                                 Price = reader.GetInt32(priceIndex),
-                                Cleaning = reader.GetBoolean(cleaningIndex)
                             });
                         }
                     }
@@ -252,7 +246,6 @@ namespace Booking.Model.DAL
                         var weekIndex = reader.GetOrdinal("Week");
                         var yearIndex = reader.GetOrdinal("Year");
                         var priceIndex = reader.GetOrdinal("Price");
-                        var cleaningIndex = reader.GetOrdinal("Cleaning");
 
                         if (reader.Read())
                         {
@@ -264,7 +257,6 @@ namespace Booking.Model.DAL
                                 Week = reader.GetInt32(weekIndex),
                                 Year = reader.GetInt32(yearIndex),
                                 Price = reader.GetInt32(priceIndex),
-                                Cleaning = reader.GetBoolean(cleaningIndex)
                             };
                         }
                         //om id:t inte skulle finnas
@@ -316,6 +308,71 @@ namespace Booking.Model.DAL
                 catch
                 {
                     throw new ApplicationException("Fel uppstod då kund skulle infogas och bokning uppdateras.");
+                }
+            }
+        }
+
+        //metod för att radera bokning
+        public void DeleteBooking(int bookingId)
+        {
+            using (SqlConnection conn = CreateConnection())
+            {
+                try
+                {
+                    //lagrad procedur
+                    SqlCommand cmd = new SqlCommand("[appSchema].[usp_DeleteBooking]", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    //lägger till parameter den lagrade proceduren kräver
+                    cmd.Parameters.Add("@BookingID", SqlDbType.Int, 4).Value = bookingId;
+
+                    //öppnar anslutning
+                    conn.Open();
+
+                    //exekverar den lagrade proceduren
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception)
+                {
+
+                    throw new ApplicationException("Fel uppstod då bokning skulle raderas.");
+                }
+            }
+        }
+
+        //metod för att lägga till ny bokning
+        public void InsertBooking(Booking booking)
+        {
+            using (SqlConnection conn = CreateConnection())
+            {
+                try
+                {
+                    //skapar och initierar Sql-objekt som kör lagrade proceduren
+                    SqlCommand cmd = new SqlCommand("[appSchema].[usp_InsertBooking]", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    //lägger till parametrar
+                    cmd.Parameters.Add("@CustomerID", SqlDbType.Int, 4).Value = booking.CustomerID;
+                    cmd.Parameters.Add("@PropertyID", SqlDbType.Int, 4).Value = booking.PropertyID;
+                    cmd.Parameters.Add("@Week", SqlDbType.Int, 4).Value = booking.Week;
+                    cmd.Parameters.Add("@Year", SqlDbType.Int, 4).Value = booking.Year;
+                    cmd.Parameters.Add("@Price", SqlDbType.Int, 4).Value = booking.Price;
+
+                    //parameter som tar emot värde från lagrade proceduren (i detta fall med nya postens BookingID)
+                    cmd.Parameters.Add("@BookingID", SqlDbType.Int, 4).Direction = ParameterDirection.Output;
+
+                    //öppnar anslutning till databasen
+                    conn.Open();
+
+                    //exec
+                    cmd.ExecuteNonQuery();
+
+                    //metod för att exec lagrade proceduren
+                    booking.BookingID = (int)cmd.Parameters["@BookingID"].Value;
+                }
+                catch
+                {
+                    throw new ApplicationException("Fel uppstod då bokning skulle infogas.");
                 }
             }
         }

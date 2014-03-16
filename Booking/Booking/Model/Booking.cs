@@ -15,6 +15,5 @@ namespace Booking.Model
         public int Week { get; set; }
         public int Year { get; set; }
         public int Price { get; set; }
-        public bool Cleaning { get; set; }
     }
 }

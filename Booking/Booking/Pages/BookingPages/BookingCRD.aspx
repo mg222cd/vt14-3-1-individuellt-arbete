@@ -16,10 +16,12 @@
 <asp:ListView ID="BookingListView" runat="server"
     ItemType="Booking.Model.Booking"
     SelectMethod="BookingListView_GetData"
-    DataKeyNames="BookingID" 
+    DeleteMethod="BookingListView_DeleteItem"
+    DataKeyNames="BookingID, CustomerID, PropertyID"
+    OnItemDataBound="BookingListView_ItemDataBound" 
     Visible="true">
     <LayoutTemplate>
-        <table>
+        <table class="grid">
             <tr>
                 <th>År</th>
                 <th>Vecka</th>
@@ -42,17 +44,17 @@
                 <asp:Label ID="WeekLabel" runat="server" Text='<%#: Item.Week %>' ></asp:Label>
             </td>
             <td>
-
                 <asp:Label ID="PropertyIDLabel" runat="server" Text='<%#: Item.PropertyID %>' ></asp:Label>
-
             </td>
-            <td class="mainlist">
+            <td>
                 <asp:Label ID="PriceLabel" runat="server" Text='<%#: Item.Price %>' ></asp:Label>
             </td>
             <td>
-
-                <asp:Label ID="BookingIDLabel" runat="server" Text='<%#: Item.BookingID %>' ></asp:Label>
-
+                <asp:Label ID="CustomerIDLabel" runat="server" Text='<%#: Item.CustomerID %>' ></asp:Label>
+            </td>
+            <td>
+                <asp:LinkButton runat="server" CommandName="Delete" Text="Radera" CausesValidation="false" 
+                    OnClientClick='<%# String.Format("return confirm(\"Vill du verkligen radera bokningen?\")") %>' />
             </td>
         </tr>
     </ItemTemplate>
@@ -66,5 +68,6 @@
         </tr>
     </table>
 </EmptyDataTemplate>
+
 </asp:ListView>
 </asp:Content>

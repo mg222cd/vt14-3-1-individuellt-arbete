@@ -141,6 +141,15 @@ table .grid{
     width:100%;
 }
 
+.grid{
+    border-left-style:solid;
+    border-left-width:thin;
+    border-left-color:#000000;
+    border-collapse: collapse;
+    border-spacing:0px;
+    width:100%;
+}
+
 
 th{
     background:#FFFFFF;

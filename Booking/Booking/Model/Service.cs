@@ -35,10 +35,21 @@ namespace Booking.Model
 
         #endregion
 
+        #region Delete-metoder
+
         public void DeleteCustomer (int customerId)
         {
             CustomerDAL.DeleteCustomer(customerId);
         }
+
+        public void DeleteBooking (int bookingId)
+        {
+            BookingDAL.DeleteBooking(bookingId);
+        }
+
+        #endregion
+
+        #region GetById-metoder
 
         public Customer GetCustomer(int customerId)
         {
@@ -49,6 +60,13 @@ namespace Booking.Model
         {
             return BookingDAL.GetBookingById(bookingID);
         }
+
+        public Property GetProperty(int propertyId)
+        {
+            return PropertyDAL.GetPropertyById(propertyId);
+        }
+
+        #endregion
 
         #region List-metoder
 
@@ -79,6 +97,8 @@ namespace Booking.Model
 
         #endregion
 
+        #region Save-metoder
+
         public void SaveCustomer(Customer customer)
         {
             //validering
@@ -104,6 +124,29 @@ namespace Booking.Model
         {
             BookingDAL.InsertCustomerAndUpdateBooking(bookingID, customer);
         }
+
+        public void SaveBooking(Booking booking)
+        {
+            //TODO Validering på samma vis som för Customer
+            //ICollection<ValidationResult> validationResults;
+            //if (!customer.Validate(out validationResults))
+            //{
+            //    var ex = new ValidationException("Objektet klarade inte valideringen");
+            //    ex.Data.Add("ValidationResults", validationResults);
+            //    throw ex;
+            //}
+
+            if (booking.BookingID == 0)//Ny post om Id är 0
+            {
+                BookingDAL.InsertBooking(booking);
+            }
+            else
+            {
+                //TODO Uppdatering här (eller ngt slags meddelande)
+            }
+        }
+
+        #endregion
 
 
     }
