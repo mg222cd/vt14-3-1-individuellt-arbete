@@ -29,7 +29,7 @@ namespace Booking.Pages.BookingPages
             return Service.GetAllBookings();
         }
 
-        //Radera bokning
+        //Raderar bokning
         public void BookingListView_DeleteItem(int bookingId)
         {
             try
@@ -42,7 +42,7 @@ namespace Booking.Pages.BookingPages
             }
         }
 
-
+        //Ger Namn till FK:s
         protected void BookingListView_ItemDataBound(object sender, ListViewItemEventArgs e)
         {
             var bookingInfo = (Booking.Model.Booking)e.Item.DataItem;
@@ -60,6 +60,7 @@ namespace Booking.Pages.BookingPages
             }
         }
 
+        //Infogar ny bokning
         public void BookingListView_InsertItem(Model.Booking booking)
         {
             if (ModelState.IsValid)
@@ -75,5 +76,16 @@ namespace Booking.Pages.BookingPages
             }
         }
 
+        //DropdownList för Stugnamn - Insert
+        public IEnumerable<Property> PropertyNameDropDownList_GetData()
+        {
+            return Service.GetProperties();
+        }
+
+        //Dropdownlist för Kundnamn - Insert
+        public IEnumerable<Customer> CustomerNameDropDownList_GetData()
+        {
+            return Service.GetCustomers();
+        }
     }
 }

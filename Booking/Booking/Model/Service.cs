@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using Booking.Model;
 
 namespace Booking.Model
 {
@@ -127,14 +128,13 @@ namespace Booking.Model
 
         public void SaveBooking(Booking booking)
         {
-            //TODO Validering på samma vis som för Customer
-            //ICollection<ValidationResult> validationResults;
-            //if (!customer.Validate(out validationResults))
-            //{
-            //    var ex = new ValidationException("Objektet klarade inte valideringen");
-            //    ex.Data.Add("ValidationResults", validationResults);
-            //    throw ex;
-            //}
+            ICollection<ValidationResult> validationResults;
+            if (!booking.Validate(out validationResults))
+            {
+                var ex = new ValidationException("Objektet klarade inte valideringen");
+                ex.Data.Add("ValidationResults", validationResults);
+                throw ex;
+            }
 
             if (booking.BookingID == 0)//Ny post om Id är 0
             {

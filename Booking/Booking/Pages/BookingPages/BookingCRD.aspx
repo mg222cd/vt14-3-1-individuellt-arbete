@@ -76,38 +76,53 @@
         </tr>
     </table>
 </EmptyDataTemplate>
-    <InsertItemTemplate>
-            <tr>
-                <td>
-                    <asp:TextBox ID="Year" runat="server" Text='<%# BindItem.Year %>' />
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
-                        ErrorMessage="År måste anges" ControlToValidate="Year" ValidationGroup="InsertGroup"
-                        Display="None"></asp:RequiredFieldValidator>
-                </td>
-                <td>
-                    <asp:TextBox ID="Week" runat="server" Text='<%# BindItem.Week %>' />
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
-                        ErrorMessage="Vecka måste anges" ControlToValidate="Week" ValidationGroup="InsertGroup"
-                        Display="None"></asp:RequiredFieldValidator>
-                </td>
-                <td>
-                    <asp:TextBox ID="PropertyID" runat="server" Text='<%# BindItem.PropertyID %>' />
-                </td>
-                <td>
-                    <asp:TextBox ID="Price" runat="server" Text='<%# BindItem.Price %>' />
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" 
-                        ErrorMessage="Pris måste anges" ControlToValidate="Price" ValidationGroup="InsertGroup"
-                        Display="None"></asp:RequiredFieldValidator>
-                </td>
-                <td>
-                    <asp:TextBox ID="CustomerID" runat="server" Text='<%# BindItem.CustomerID %>' />
-                </td>
-                <td>
-                    <%-- Kommandoknappar --%>
-                    <asp:LinkButton runat="server" CommandName="Insert" Text="Lägg till" />
-                    <asp:LinkButton runat="server" CommandName="Cancel" Text="Rensa" CausesValidation="false" />
-                </td>
-            </tr>
-        </InsertItemTemplate>
+<%--Lägg till Bokning--%>
+<InsertItemTemplate>
+    <tr>
+        <td>
+            <asp:TextBox ID="Year" runat="server" Text='<%# BindItem.Year %>' />
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+                ErrorMessage="År måste anges" ControlToValidate="Year" ValidationGroup="InsertGroup"
+                Display="None"></asp:RequiredFieldValidator>
+        </td>
+        <td>
+            <asp:TextBox ID="Week" runat="server" Text='<%# BindItem.Week %>' />
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
+                ErrorMessage="Vecka måste anges" ControlToValidate="Week" ValidationGroup="InsertGroup"
+                Display="None"></asp:RequiredFieldValidator>
+        </td>
+        <td>
+            <asp:DropDownList ID="PropertyNameDropDownList" runat="server"
+                ItemType="Booking.Model.Property"
+                SelectMethod="PropertyNameDropDownList_GetData"
+                DataTextField="PropertyName"
+                DataValueField="PropertyID"
+                SelectedValue='<%# BindItem.PropertyID %>'
+                CssClass="DropDown">
+            </asp:DropDownList>
+        </td>
+        <td>
+            <asp:TextBox ID="Price" runat="server" Text='<%# BindItem.Price %>' />
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" 
+                ErrorMessage="Pris måste anges" ControlToValidate="Price" ValidationGroup="InsertGroup"
+                Display="None"></asp:RequiredFieldValidator>
+        </td>
+        <td>
+            <asp:DropDownList ID="CustomerNameDropDownList" runat="server"
+                ItemType="Booking.Model.Customer"
+                SelectMethod="CustomerNameDropDownList_GetData"
+                DataTextField="Name"
+                DataValueField="CustomerID"
+                SelectedValue='<%# BindItem.CustomerID %>'
+                CssClass="DropDown">
+            </asp:DropDownList>
+        </td>
+        <td>
+            <%-- Kommandoknappar --%>
+            <asp:LinkButton runat="server" CommandName="Insert" Text="Lägg till" />
+            <asp:LinkButton runat="server" CommandName="Cancel" Text="Rensa" CausesValidation="false" />
+        </td>
+    </tr>
+</InsertItemTemplate>
 </asp:ListView>
 </asp:Content>

@@ -84,9 +84,7 @@
     <Content Include="packages.config" />
     <Content Include="Pages\BookingPages\BookingCRD.aspx" />
     <Content Include="Pages\BookingPages\BookingListing.aspx" />
-    <Content Include="Pages\CustomerPages\CostumerCreate.aspx" />
     <Content Include="Pages\CustomerPages\CustomerCrud.aspx" />
-    <Content Include="Pages\PropertyPages\PropertyCrud.aspx" />
     <Content Include="Pages\Shared\Site.Master" />
     <None Include="Properties\PublishProfiles\MyProfile.pubxml" />
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
@@ -125,26 +123,12 @@
     <Compile Include="Pages\BookingPages\BookingListing.aspx.designer.cs">
       <DependentUpon>BookingListing.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\CustomerPages\CostumerCreate.aspx.cs">
-      <DependentUpon>CostumerCreate.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\CustomerPages\CostumerCreate.aspx.designer.cs">
-      <DependentUpon>CostumerCreate.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Pages\CustomerPages\CustomerCrud.aspx.cs">
       <DependentUpon>CustomerCrud.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Pages\CustomerPages\CustomerCrud.aspx.designer.cs">
       <DependentUpon>CustomerCrud.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\PropertyPages\PropertyCrud.aspx.cs">
-      <DependentUpon>PropertyCrud.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\PropertyPages\PropertyCrud.aspx.designer.cs">
-      <DependentUpon>PropertyCrud.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Shared\Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
