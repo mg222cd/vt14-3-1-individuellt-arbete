@@ -86,7 +86,6 @@
             <tr>
                 <td>
                     <asp:TextBox ID="Name" runat="server" Text='<%# BindItem.Name %>' />
-                    <%-- Validering Input Name --%>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
                         ErrorMessage="Namn måste anges" ControlToValidate="Name" ValidationGroup="InsertGroup"
                         Display="None"></asp:RequiredFieldValidator>
@@ -138,7 +137,6 @@
                 <tr>
                 <td>
                     <asp:TextBox ID="Name" runat="server" Text='<%# BindItem.Name %>' />
-                    <%-- Validering Input Name --%>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
                         ErrorMessage="Namn måste anges" ControlToValidate="Name" ValidationGroup="InsertGroup"
                         Display="None"></asp:RequiredFieldValidator>

@@ -20,11 +20,17 @@ namespace Booking.Pages.BookingPages
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            //om det gjorts en bokning
+            if (Session["Success"] as bool? == true)
+            {
+                Literal1.Text = String.Format(Literal1.Text = "Tack för din bokning! Bokningsbekräftelse kommer att skickas inom 48 h");
+            }
             //Vid PageLoad initieras ny Session
             if (!IsPostBack)
             {
                 Session["BookingId"] = 0;
             }
+            
         }
 
         //Hämta lista tabell 1
@@ -53,7 +59,12 @@ namespace Booking.Pages.BookingPages
             //Information att använda i bekräftelsetext
             Model.Booking bookingObject = new Model.Booking();
             bookingObject = Service.GetBooking(bookingID);
-            //lägg till och visa infotext om bokning.
+            //Infotext
+            MessageLabel.Visible = false;
+            Literal1.Visible = true;
+            Literal1.Text = String.Format(Literal1.Text="Bokning avseende vecka {0} år {1}. Pris {2}:-.", 
+                bookingObject.Week, bookingObject.Year, bookingObject.Price);
+            
         }
 
         //Infoga ny kund och uppdatera bokning
@@ -65,10 +76,15 @@ namespace Booking.Pages.BookingPages
                     int bookingId = ((int?)Session["BookingId"] ?? 0);
                     //infoga och uppdatera
                     Service.SaveCustomerAndUpdateBooking(bookingId, customer);
+                    //rensar bokningsid:t
+                    Session.Clear();
+                    //sparar undan att dte är en bokning
+                    Session["Success"] = true;
+                    Response.Redirect("BookingListing.aspx");
                 }
                 catch (Exception)
                 {
-                    ModelState.AddModelError(String.Empty, "Ett fel uppstod då kund skulle läggas till.");
+                    ModelState.AddModelError(String.Empty, "Ett fel uppstod vid bokning.");
                 }
         }
 

@@ -127,6 +127,10 @@ nav li a{
     padding-bottom:10px;
 }
 
+#BookingInfoDiv{
+    font-weight:bold;
+}
+
 /*Tables*/
 table .grid{
     border-left-style:solid;

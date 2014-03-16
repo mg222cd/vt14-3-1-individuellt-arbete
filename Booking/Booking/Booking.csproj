@@ -82,6 +82,7 @@
     <Content Include="Error.html" />
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
+    <Content Include="Pages\BookingPages\BookingCRD.aspx" />
     <Content Include="Pages\BookingPages\BookingListing.aspx" />
     <Content Include="Pages\CustomerPages\CostumerCreate.aspx" />
     <Content Include="Pages\CustomerPages\CustomerCrud.aspx" />
@@ -110,6 +111,13 @@
     <Compile Include="Model\DAL\PropertyDAL.cs" />
     <Compile Include="Model\Property.cs" />
     <Compile Include="Model\Service.cs" />
+    <Compile Include="Pages\BookingPages\BookingCRD.aspx.cs">
+      <DependentUpon>BookingCRD.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\BookingPages\BookingCRD.aspx.designer.cs">
+      <DependentUpon>BookingCRD.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\BookingPages\BookingListing.aspx.cs">
       <DependentUpon>BookingListing.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
