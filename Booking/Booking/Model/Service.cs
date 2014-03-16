@@ -62,6 +62,11 @@ namespace Booking.Model
             return PropertyDAL.GetProperties();
         }
 
+        public IEnumerable<Booking> GetAllBookings()
+        {
+            return BookingDAL.GetAllBookings();
+        }
+
         public IEnumerable<Booking> GetUnbooked1()
         {
             return BookingDAL.GetUnbookedWeeksProp1();

@@ -168,6 +168,65 @@ namespace Booking.Model.DAL
             }
         }
 
+        //Metod för at hämta alla bokningar
+        public IEnumerable<Booking> GetAllBookings()
+        {
+            //anslutningsobjekt
+            using (var conn = CreateConnection())
+            {
+                try
+                {
+                    //skapa lista
+                    var allBookings = new List<Booking>(100);
+
+                    //exec lagrad procedur
+                    var cmd = new SqlCommand("[appSchema].[usp_GetBookings]", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    //öppna anslutning
+                    conn.Open();
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        //returnerar heltal med index
+                        var bookingIdIndex = reader.GetOrdinal("BookingID");
+                        var customerIdIndex = reader.GetOrdinal("CustomerID");
+                        var propertyIdIndex = reader.GetOrdinal("PropertyID");
+                        var weekIndex = reader.GetOrdinal("Week");
+                        var yearIndex = reader.GetOrdinal("Year");
+                        var priceIndex = reader.GetOrdinal("Price");
+                        var cleaningIndex = reader.GetOrdinal("Cleaning");
+
+                        //läs så länge Read returnerar true
+                        while (reader.Read())
+                        {
+                            //samlingsobjekt av typen List
+                            allBookings.Add(new Booking
+                            {
+                                //varje post översätts till C#-Bookingobjekt
+                                BookingID = reader.GetInt32(bookingIdIndex),
+                                CustomerID = reader.GetInt32(customerIdIndex),
+                                PropertyID = reader.GetInt32(propertyIdIndex),
+                                Week = reader.GetInt32(weekIndex),
+                                Year = reader.GetInt32(yearIndex),
+                                Price = reader.GetInt32(priceIndex),
+                                Cleaning = reader.GetBoolean(cleaningIndex)
+                            });
+                        }
+                    }
+
+                    //SIST trimma och returnera
+                    allBookings.TrimExcess();
+                    return allBookings;
+                }
+                catch
+                {
+
+                    throw new ApplicationException("Fel uppstod i samband med hämtning av alla bokningar");
+                }
+            }
+        }
+
         //Metod för att hämta BookingID
         public Booking GetBookingById(int BookingID)
         {
@@ -221,6 +280,7 @@ namespace Booking.Model.DAL
             }
         }
 
+        //Metod för kundbokning
         public void InsertCustomerAndUpdateBooking (int bookingId, Customer customer)
         {
             using (SqlConnection conn = CreateConnection())
