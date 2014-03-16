@@ -60,5 +60,20 @@ namespace Booking.Pages.BookingPages
             }
         }
 
+        public void BookingListView_InsertItem(Model.Booking booking)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    Service.SaveBooking(booking);
+                }
+                catch (Exception)
+                {
+                    ModelState.AddModelError(String.Empty, "Fel uppstod då bokning skulle läggas till i listan");
+                }
+            }
+        }
+
     }
 }

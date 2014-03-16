@@ -4,7 +4,13 @@
     <h2>administrera bokningar</h2>
     <div class="list">
             <%--Validering --%>
-            
+            <asp:ValidationSummary ID="ValidationSummary1" runat="server" HeaderText="Fel inträffade! Korrigera och försök igen." 
+                    CssClass="ValidationSummaryErrors" />
+                <asp:ValidationSummary ID="ValidationSummary2" runat="server" HeaderText="Fel inträffade! Korrigera och försök igen."
+                    ValidationGroup="InsertGroup" ShowModelStateErrors="false" />
+                <asp:ValidationSummary ID="ValidationSummary3" runat="server" HeaderText="Fel inträffade! Korrigera och försök igen." 
+                    ValidationGroup="EditGroup" ShowModelStateErrors="false"/>
+
             <%--Meddelanden --%>
             <div class="message">
             <asp:Label ID="MessageLabel" runat="server" Visible="false" CssClass="UploadLabel"></asp:Label>
@@ -17,8 +23,10 @@
     ItemType="Booking.Model.Booking"
     SelectMethod="BookingListView_GetData"
     DeleteMethod="BookingListView_DeleteItem"
+    InsertMethod="BookingListView_InsertItem"
     DataKeyNames="BookingID, CustomerID, PropertyID"
     OnItemDataBound="BookingListView_ItemDataBound" 
+    InsertItemPosition="FirstItem"
     Visible="true">
     <LayoutTemplate>
         <table class="grid">
@@ -68,6 +76,38 @@
         </tr>
     </table>
 </EmptyDataTemplate>
-
+    <InsertItemTemplate>
+            <tr>
+                <td>
+                    <asp:TextBox ID="Year" runat="server" Text='<%# BindItem.Year %>' />
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+                        ErrorMessage="År måste anges" ControlToValidate="Year" ValidationGroup="InsertGroup"
+                        Display="None"></asp:RequiredFieldValidator>
+                </td>
+                <td>
+                    <asp:TextBox ID="Week" runat="server" Text='<%# BindItem.Week %>' />
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
+                        ErrorMessage="Vecka måste anges" ControlToValidate="Week" ValidationGroup="InsertGroup"
+                        Display="None"></asp:RequiredFieldValidator>
+                </td>
+                <td>
+                    <asp:TextBox ID="PropertyID" runat="server" Text='<%# BindItem.PropertyID %>' />
+                </td>
+                <td>
+                    <asp:TextBox ID="Price" runat="server" Text='<%# BindItem.Price %>' />
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" 
+                        ErrorMessage="Pris måste anges" ControlToValidate="Price" ValidationGroup="InsertGroup"
+                        Display="None"></asp:RequiredFieldValidator>
+                </td>
+                <td>
+                    <asp:TextBox ID="CustomerID" runat="server" Text='<%# BindItem.CustomerID %>' />
+                </td>
+                <td>
+                    <%-- Kommandoknappar --%>
+                    <asp:LinkButton runat="server" CommandName="Insert" Text="Lägg till" />
+                    <asp:LinkButton runat="server" CommandName="Cancel" Text="Rensa" CausesValidation="false" />
+                </td>
+            </tr>
+        </InsertItemTemplate>
 </asp:ListView>
 </asp:Content>
