@@ -46,7 +46,12 @@ body {
 
 .UploadLabel{
     font-weight:bold;
-    color:#f675b0;
+    color:#000000;
+    background-color:#efc1c1;
+    padding-right:30px;
+    padding-left:30px;
+    padding-top:10px;
+    padding-bottom:10px;
 }
 
 .message{

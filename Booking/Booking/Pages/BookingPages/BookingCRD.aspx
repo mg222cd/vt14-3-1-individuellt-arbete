@@ -118,7 +118,6 @@
             <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" 
                 ErrorMessage="Felaktigt format för pris" ControlToValidate="Price" ValidationExpression="^(?=[0-9]{3,6}$)0*[1-9][0-9]{2,5}"
                 ValidationGroup="InsertGrout" Display="None"></asp:RegularExpressionValidator>
-            
         </td>
         <td>
             <asp:DropDownList ID="CustomerNameDropDownList" runat="server"

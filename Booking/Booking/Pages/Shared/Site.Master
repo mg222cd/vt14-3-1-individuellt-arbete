@@ -7,7 +7,7 @@
     <title>Booking</title>
         <link href="~/Content/reset.css" rel="stylesheet" type="text/css" />
         <link href="~/Content/site.css" rel="stylesheet" type="text/css" />
-        <%: System.Web.Optimization.Scripts.Render("http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js") %>
+        <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 
 </head>
 <body>
@@ -21,9 +21,9 @@
             <nav>
                 <div id="menu">
                     <ul>
-                        <li><a href="../BookingPages/BookingListing.aspx">kundbokning</a></li>
-                        <li><a href="../BookingPages/BookingCRD.aspx">administrera bokningar</a></li>
-                        <li><a href="../CustomerPages/CustomerCrud.aspx">administrera kunder</a></li>
+                        <asp:HyperLink runat="server" Text="kundbokning" NavigateUrl='<%$ RouteUrl:routename=Default %>' CssClass="links" />
+                        <asp:HyperLink runat="server" Text="administrera bokningar" NavigateUrl='<%$ RouteUrl:routename=BookingCRD %>' CssClass="links" />
+                        <asp:HyperLink runat="server" Text="administrera kunder" NavigateUrl='<%$ RouteUrl:routename=CustomerCrud %>' CssClass="links" />
                     </ul>
                 </div><%--#menu--%>
             </nav>
@@ -39,7 +39,7 @@
     </form>
     <script>
         $(function () {
-            $('#UploadLabel').fadeOut(6000);
+            $('.UploadLabel').fadeOut(6000);
         });
     </script>
 </body>

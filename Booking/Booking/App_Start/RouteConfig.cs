@@ -10,20 +10,9 @@ namespace Booking.App_Start
     {
         public static void RegisterRoutes (RouteCollection routes)
         {
-            //TODO Fixa alla URL:er
-            //skicka med namn, url, fysiskfil(webbformuläret)
-            //
-
-            //routes.MapPageRoute("CustomerCreate",
-            //    "kund/ny",
-            //    "~/Create.aspx");
-
-            //För att det ska fungera på VPN
-            //routes.MapPageRoute(
-            //    "Default",          "",         "~/Pages/BookingPages/BookingListing.aspx"
-            //);
-   
-
+            routes.MapPageRoute(    "Default",          "",                  "~/Pages/BookingPages/BookingListing.aspx");
+            routes.MapPageRoute(    "BookingCRD",       "booking/admin",     "~/Pages/BookingPages/BookingCRD.aspx");
+            routes.MapPageRoute(    "CustomerCrud",     "customer/admin",    "~/Pages/CustomerPages/CustomerCrud.aspx");
         }
     }
 }
