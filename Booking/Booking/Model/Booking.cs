@@ -16,10 +16,13 @@ namespace Booking.Model
 
         public int PropertyID { get; set; }
 
+        [RegularExpression(@"^([0-5]?[0-9]|53)$", ErrorMessage = "Ogiltigt format för vecka")]
         public int Week { get; set; }
 
+        [RegularExpression(@"^(19|20)\d{2}$", ErrorMessage = "Ogiltigt format för år")]
         public int Year { get; set; }
 
+        [RegularExpression(@"^(?=[0-9]{3,6}$)0*[1-9][0-9]{2,5}", ErrorMessage = "Felaktigt format för pris")]
         public int Price { get; set; }
     }
 }

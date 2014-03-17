@@ -40,13 +40,13 @@ namespace Booking.Pages.BookingPages {
         protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary3;
         
         /// <summary>
-        /// MessageLabel control.
+        /// UploadLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label MessageLabel;
+        protected global::System.Web.UI.WebControls.Label UploadLabel;
         
         /// <summary>
         /// BookingListView control.

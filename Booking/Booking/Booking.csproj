@@ -84,6 +84,7 @@
     <Content Include="packages.config" />
     <Content Include="Pages\BookingPages\BookingCRD.aspx" />
     <Content Include="Pages\BookingPages\BookingListing.aspx" />
+    <Content Include="Pages\BookingPages\BookingSuccess.aspx" />
     <Content Include="Pages\CustomerPages\CustomerCrud.aspx" />
     <Content Include="Pages\Shared\Site.Master" />
     <None Include="Properties\PublishProfiles\MyProfile.pubxml" />
@@ -122,6 +123,13 @@
     </Compile>
     <Compile Include="Pages\BookingPages\BookingListing.aspx.designer.cs">
       <DependentUpon>BookingListing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\BookingPages\BookingSuccess.aspx.cs">
+      <DependentUpon>BookingSuccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\BookingPages\BookingSuccess.aspx.designer.cs">
+      <DependentUpon>BookingSuccess.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\CustomerPages\CustomerCrud.aspx.cs">
       <DependentUpon>CustomerCrud.aspx</DependentUpon>

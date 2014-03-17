@@ -10,7 +10,7 @@ namespace Booking.Model.DAL
 {
     public class PropertyDAL
     {
-         #region Fält
+        #region Fält
         
         //anslutningssträng som tillhör klassen.
         private static readonly string _connectionString;
@@ -126,105 +126,6 @@ namespace Booking.Model.DAL
                 }
             }
         }
-
-        //public void InsertCustomer(Customer customer)
-        //{
-        //    using (SqlConnection conn = CreateConnection())
-        //    {
-        //        try
-        //        {
-        //            //skapar och initierar Sql-objekt som kör lagrade proceduren
-        //            SqlCommand cmd = new SqlCommand("[appSchema].[usp_InsertCustomer]", conn);
-        //            cmd.CommandType = CommandType.StoredProcedure;
-
-        //            //lägger till parametrar
-        //            cmd.Parameters.Add("@Name", SqlDbType.VarChar, 40).Value = customer.Name;
-        //            cmd.Parameters.Add("@Address", SqlDbType.VarChar, 40).Value = customer.Address;
-        //            cmd.Parameters.Add("@Postal", SqlDbType.Int, 4).Value = customer.Postal;
-        //            cmd.Parameters.Add("@City", SqlDbType.VarChar, 25).Value = customer.City;
-        //            cmd.Parameters.Add("@Phone", SqlDbType.VarChar, 20).Value = customer.Phone;
-        //            cmd.Parameters.Add("@Email", SqlDbType.VarChar, 50).Value = customer.Email;
-
-        //            //parameter som tar emot värde från lagrade proceduren (i detta fall med nya postens customerId)
-        //            cmd.Parameters.Add("@CustomerId", SqlDbType.Int, 4).Direction = ParameterDirection.Output;
-
-        //            //öppnar anslutning till databasen
-        //            conn.Open();
-
-        //            //exec
-        //            cmd.ExecuteNonQuery();
-
-        //            //metod för att exec lagrade proceduren
-        //            customer.CustomerID = (int)cmd.Parameters["@CustomerId"].Value;
-
-        //        }
-        //        catch
-        //        {
-        //            throw new ApplicationException("Fel uppstod då kund skulle infogas.");
-        //        }
-        //    }
-        //}
-
-        //public void UpdateCustomer(Customer customer)
-        //{
-        //    using (SqlConnection conn = CreateConnection())
-        //    {
-        //        try
-        //        {
-        //            //lagrad procedur
-        //            SqlCommand cmd = new SqlCommand("[appSchema].[usp_UpdateCustomer]", conn);
-        //            cmd.CommandType = CommandType.StoredProcedure;
-
-        //            //lägger till parametrar
-        //            cmd.Parameters.Add("@CustomerID", SqlDbType.Int, 4).Value = customer.CustomerID;
-        //            cmd.Parameters.Add("@Name", SqlDbType.VarChar, 40).Value = customer.Name;
-        //            cmd.Parameters.Add("@Address", SqlDbType.VarChar, 40).Value = customer.Address;
-        //            cmd.Parameters.Add("@Postal", SqlDbType.VarChar, 6).Value = customer.Postal;
-        //            cmd.Parameters.Add("@City", SqlDbType.VarChar, 25).Value = customer.City;
-        //            cmd.Parameters.Add("@Phone", SqlDbType.VarChar, 20).Value = customer.Phone;
-        //            cmd.Parameters.Add("@Email", SqlDbType.VarChar, 50).Value = customer.Email;
-
-        //            //öppnar anslutning
-        //            conn.Open();
-
-        //            //exekverar den lagrade proceduren
-        //            cmd.ExecuteNonQuery();
-        //        }
-        //        catch
-        //        {
-        //            throw new ApplicationException("Fel uppstod när kund skulle uppdateras");
-        //        }
-                
-        //    }
-        //}
-
-        //public void DeleteCustomer(int customerId)
-        //{
-        //    using (SqlConnection conn = CreateConnection())
-        //    {
-        //        try
-        //        {
-        //            //lagrad procedur
-        //            SqlCommand cmd = new SqlCommand("[appSchema].[usp_DeleteCustomer]", conn);
-        //            cmd.CommandType = CommandType.StoredProcedure;
-
-        //            //lägger till parameter den lagrade proceduren kräver
-        //            cmd.Parameters.Add("@CustomerID", SqlDbType.Int, 4).Value = customerId;
-
-        //            //öppnar anslutning
-        //            conn.Open();
-
-        //            //exekverar den lagrade proceduren
-        //            cmd.ExecuteNonQuery();
-        //        }
-        //        catch (Exception)
-        //        {
-
-        //            throw new ApplicationException("Fel uppstod då kund skulle raderas");
-        //        }
-        //    }
-        //}
-
 
         #endregion
     }

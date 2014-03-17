@@ -13,7 +13,7 @@
                     ValidationGroup="EditGroup" ShowModelStateErrors="false"/>
                 <%--Meddelanden --%>
                 <div class="message">
-                <asp:Label ID="UploadLabel" runat="server" Text="Test" Visible="true" CssClass="UploadLabel"></asp:Label>
+                <asp:Label ID="UploadLabel" runat="server" Text="" Visible="false" CssClass="UploadLabel"></asp:Label>
                 </div>
       </div><%--.List --%>
 </asp:Content>

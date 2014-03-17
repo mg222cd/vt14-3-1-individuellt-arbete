@@ -5,5 +5,5 @@ window.onload = function () {
 */
 
 $(function () {
-    $('#BookingInfoDiv').fadeOut(6000);
+    $('#UploadLabel').fadeOut(6000);
 });

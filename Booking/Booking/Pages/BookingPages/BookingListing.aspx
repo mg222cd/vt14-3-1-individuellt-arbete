@@ -2,7 +2,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ValidationContentPlaceHolder" runat="server">
 <%--Header, Validering och meddelanden --%>
     <div class="list">
-            
+        <h2>kundbokning</h2>
+        <p>Enbart hela veckor kan bokas. Bytesdag är alltid lördag. Slutstädning ingår ej i priset.</p>    
             <%--Validering --%>
             <asp:ValidationSummary ID="ValidationSummary1" runat="server" HeaderText="Fel inträffade! Korrigera och försök igen." 
                     CssClass="ValidationSummaryErrors" />
@@ -10,22 +11,17 @@
                     ValidationGroup="InsertGroup" ShowModelStateErrors="false" />
             <%--Meddelanden --%>
             <div class="message">
-            <asp:Label ID="MessageLabel" runat="server" Text="Nedan visas bokningsbara veckor för respektive stuga. 
-                Enbart hela veckor kan bokas. Bytesdag är alltid lördag. Slutstädning ingår ej i priset." 
-                Visible="true" CssClass="UploadLabel"></asp:Label>
                 <div class="message" id="BookingInfoDiv">
-                    <asp:Literal ID="Literal1" runat="server" Visible="true">
-                    </asp:Literal>
-                </div>
-                   <asp:Literal ID="Literal2" runat="server" Visible="true">
+                    <asp:Literal ID="Literal2" runat="server" Visible="true">
                     </asp:Literal> 
+                </div>
             </div>
             <%--Validation Summary--%>
     </div>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
-<%--FORMVIEW--%>
+<%--FORMVIEW För att infoga kund vid bokning--%>
 <asp:FormView ID="CustomerFormView" runat="server"
     ItemType="Booking.Model.Customer"
     DefaultMode="Insert"
@@ -33,10 +29,6 @@
     Visible="false"
     ViewStateMode="Enabled">
     <InsertItemTemplate>
-        <%--Informationstext--%>
-        <div class="message">
-            
-        </div>
         <fieldset>
         <div class="editor-label">
             <label for="Name">Namn</label>
@@ -45,8 +37,8 @@
             <asp:TextBox ID="Name" runat="server" Text='<%# BindItem.Name %>' />
             <%-- Validering--%>
             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
-                        ErrorMessage="Namn måste anges" ControlToValidate="Name" ValidationGroup="InsertGroup"
-                        Display="None"></asp:RequiredFieldValidator>
+                ErrorMessage="Namn måste anges" ControlToValidate="Name" ValidationGroup="InsertGroup"
+                Display="None"></asp:RequiredFieldValidator>
         </div>
         <div class="editor-label">
             <label for="Address">Adress</label>
@@ -67,7 +59,7 @@
             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
                         ErrorMessage="Postnr måste anges" ControlToValidate="Postal" ValidationGroup="InsertGroup"
                         Display="None"></asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" 
+            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" 
                         ErrorMessage="Postnumret är ogiltigt" ControlToValidate="Postal" ValidationExpression="^[1-9]\d{2} ?\d{2}"
                         ValidationGroup="InsertGrout" Display="None"></asp:RegularExpressionValidator>
         </div>
@@ -90,6 +82,7 @@
             <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" 
                         ErrorMessage="Telefonnr måste anges" ControlToValidate="Phone" ValidationGroup="InsertGroup"
                         Display="None"></asp:RequiredFieldValidator>
+
         </div>
         <div class="editor-label">
             <label for="Email">Epost</label>
@@ -100,7 +93,7 @@
             <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" 
                         ErrorMessage="Email måste anges" ControlToValidate="Email" ValidationGroup="InsertGroup"
                         Display="None"></asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" 
+            <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" 
                         ErrorMessage="E-mailadressen är ogiltig" ControlToValidate="Email" ValidationExpression="^[1-9]\d{2} ?\d{2}"
                         ValidationGroup="InsertGrout" Display="None"></asp:RegularExpressionValidator>
         </div>
@@ -113,7 +106,7 @@
     </InsertItemTemplate>
 </asp:FormView>
 
-<%--LISTVIEW--%>
+<%--LISTVIEW Lista 1 --%>
 <asp:ListView ID="Unbooked1ListView" runat="server"
     ItemType="Booking.Model.Booking"
     SelectMethod="Unbooked1ListView_GetData"
@@ -148,15 +141,18 @@
     </ItemTemplate>
     <EmptyDataTemplate>
     <%-- Detta visas då uppgifter saknas i databasen. --%>
-    <table class="grid">
+    <table class="maintable">
+        <tr><th class="th_header">Stuga 1 - Lillstugan</th></tr>
         <tr>
             <td>
-                Uppgifter saknas.
+                Inga bokningsbara veckor tillgängliga.
             </td>
         </tr>
     </table>
 </EmptyDataTemplate>
 </asp:ListView>
+
+<%--LISTVIEW Lista 2 --%>
 <asp:ListView ID="Unbooked2ListView" runat="server"
     ItemType="Booking.Model.Booking"
     SelectMethod="Unbooked2ListView_GetData"
@@ -191,10 +187,11 @@
     </ItemTemplate>
     <EmptyDataTemplate>
     <%-- Detta visas då uppgifter saknas i databasen. --%>
-    <table class="grid">
+    <table class="maintable">
+        <tr><th class="th_header">Stuga 2 - Huset</th></tr>
         <tr>
             <td>
-                Uppgifter saknas.
+                Inga bokningsbara veckor tillgängliga.
             </td>
         </tr>
     </table>

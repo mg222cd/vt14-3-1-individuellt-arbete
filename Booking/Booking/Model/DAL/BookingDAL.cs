@@ -67,17 +67,6 @@ namespace Booking.Model.DAL
                         var yearIndex = reader.GetOrdinal("Year");
                         var priceIndex = reader.GetOrdinal("Price");
 
-                        /* TODO: Radera detta när vi vet att allt funkar.
-                         * Booking temp = new Booking();
-                        temp.BookingID = reader.GetInt32(bookingIdIndex);
-                        temp.CustomerID = reader.GetInt32(customerIdIndex);
-                        temp.PropertyID = reader.GetInt32(propertyIdIndex);
-                        temp.Week = reader.GetInt32(weekIndex);
-                        temp.Year = reader.GetInt32(yearIndex);
-                        temp.Price = reader.GetInt32(priceIndex);
-                        //Cleaning = reader.GetBoolean(cleaningIndex)
-                         */
-
                         //läs så länge Read returnerar true
                         while (reader.Read())
                         {
@@ -94,14 +83,12 @@ namespace Booking.Model.DAL
                             });
                         }
                     }
-
-                    //SIST trimma och returnera
+                    //trimma och returnera
                     unbookedProperty1.TrimExcess();
                     return unbookedProperty1;
                 }     
                 catch
                 {
-                    //TODO Varför hamnar man här när listan ska hämtas?
                     throw new ApplicationException("Fel uppstod i samband med hämtning av obokade veckor - stuga 1");
                 }
             }
@@ -151,8 +138,7 @@ namespace Booking.Model.DAL
                             });
                         }
                     }
-
-                    //SIST trimma och returnera
+                    //trimma och returnera
                     unbookedProperty1.TrimExcess();
                     return unbookedProperty1;
                 }
@@ -208,14 +194,12 @@ namespace Booking.Model.DAL
                             });
                         }
                     }
-
-                    //SIST trimma och returnera
+                    //trimma och returnera
                     allBookings.TrimExcess();
                     return allBookings;
                 }
                 catch
                 {
-
                     throw new ApplicationException("Fel uppstod i samband med hämtning av alla bokningar");
                 }
             }
@@ -303,7 +287,6 @@ namespace Booking.Model.DAL
 
                     //metod för att exec lagrade proceduren
                     customer.CustomerID = (int)cmd.Parameters["@CustomerId"].Value;
-
                 }
                 catch
                 {
@@ -374,39 +357,6 @@ namespace Booking.Model.DAL
                 {
                     throw new ApplicationException("Fel uppstod då bokning skulle infogas.");
                 }
-            }
-        }
-
-        //metod för att uppdatera bokning 
-        public void UpdateBooking(Booking booking)
-        {
-            using (SqlConnection conn = CreateConnection())
-            {
-                try
-                {
-                    //lagrad procedur
-                    SqlCommand cmd = new SqlCommand("[appSchema].[usp_UpdateBooking]", conn);
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    //lägger till parametrar
-                    cmd.Parameters.Add("@BookingID", SqlDbType.Int, 4).Value = booking.BookingID;
-                    cmd.Parameters.Add("@CustomerID", SqlDbType.Int, 4).Value = booking.CustomerID;
-                    cmd.Parameters.Add("@PropertyID", SqlDbType.Int, 4).Value = booking.PropertyID;
-                    cmd.Parameters.Add("@Week", SqlDbType.Int, 4).Value = booking.Week;
-                    cmd.Parameters.Add("@Year", SqlDbType.Int, 4).Value = booking.Year;
-                    cmd.Parameters.Add("@Price", SqlDbType.Int, 4).Value = booking.Price;
-
-                    //öppnar anslutning
-                    conn.Open();
-
-                    //exekverar den lagrade proceduren
-                    cmd.ExecuteNonQuery();
-                }
-                catch
-                {
-                    throw new ApplicationException("Fel uppstod när kund skulle uppdateras");
-                }
-
             }
         }
 

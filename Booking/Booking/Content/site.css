@@ -121,6 +121,10 @@ nav li a{
     padding-bottom:10px;
 }
 
+.succeed{
+    color:#f675b0;
+}
+
 .th_header{
     font-weight:bold;
     font-size:18px;

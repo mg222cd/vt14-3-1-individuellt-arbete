@@ -142,7 +142,7 @@ namespace Booking.Model
             }
             else
             {
-                BookingDAL.UpdateBooking(booking);
+                throw new ApplicationException("Fel uppstod i samband med att ny bokning skulle skapas.");
             }
         }
 

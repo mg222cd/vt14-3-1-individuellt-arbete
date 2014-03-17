@@ -12,10 +12,16 @@ namespace Booking.App_Start
         {
             //TODO Fixa alla URL:er
             //skicka med namn, url, fysiskfil(webbformuläret)
+            //
+
             //routes.MapPageRoute("CustomerCreate",
             //    "kund/ny",
             //    "~/Create.aspx");
 
+            //För att det ska fungera på VPN
+            //routes.MapPageRoute(
+            //    "Default",          "",         "~/Pages/BookingPages/BookingListing.aspx"
+            //);
    
 
         }

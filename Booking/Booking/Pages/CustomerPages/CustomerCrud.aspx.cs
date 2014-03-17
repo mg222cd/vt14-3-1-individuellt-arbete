@@ -22,15 +22,13 @@ namespace Booking.Pages.CustomerPages
 
         }
 
-        //TODO: Ordna UploadLabel så att statusmedelande visas vid lyckad CRUD. FIxa även JS-filen och Falsa kontrollen.
-
-        //Visa alla kunder
+        //Visar kundlista
         public IEnumerable<Customer> CustomerListView_GetData()
         {
             return Service.GetCustomers();
         }
 
-        //Lägg till kund
+        //Lägger till kund
         public void CustomerListView_InsertItem(Customer customer)
         {
             if (ModelState.IsValid)
@@ -38,6 +36,9 @@ namespace Booking.Pages.CustomerPages
                 try
                 {
                     Service.SaveCustomer(customer);
+                    //statusmeddelande
+                    UploadLabel.Visible = true;
+                    UploadLabel.Text = "Ny kund lades till.";
                 }
                 catch (Exception)
                 {
@@ -46,7 +47,7 @@ namespace Booking.Pages.CustomerPages
             }
         }
 
-        //Uppdatera kund
+        //Uppdaterar kund
         public void CustomerListView_UpdateItem(int customerID)
         {
             try
@@ -60,12 +61,14 @@ namespace Booking.Pages.CustomerPages
                 if (TryUpdateModel(customer))
                 {
                     Service.SaveCustomer(customer);
+                    //statusmeddelande
+                    UploadLabel.Visible = true;
+                    UploadLabel.Text = "Kund uppdaterades.";
                 }
             }
             catch (Exception)
             {
-
-                ModelState.AddModelError(String.Empty, "Ett oväntet fel inträffade då kund skulle uppdateras");
+                ModelState.AddModelError(String.Empty, "Ett oväntet fel inträffade då kund skulle uppdateras.");
             }
         }
 
@@ -75,10 +78,12 @@ namespace Booking.Pages.CustomerPages
             try
             {
                 Service.DeleteCustomer(customerID);
+                //statusmeddelande
+                UploadLabel.Visible = true;
+                UploadLabel.Text = "Kund raderades.";
             }
             catch (Exception)
             {
-
                 ModelState.AddModelError(String.Empty, "Fel uppstod då kund skulle raderas. Kontrollera att kund inte har bokningar. Isåfall - radera först dessa och försök sedan igen.");
             }
         }

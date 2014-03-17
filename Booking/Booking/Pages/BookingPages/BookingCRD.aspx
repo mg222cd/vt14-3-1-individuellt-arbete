@@ -12,12 +12,12 @@
                     ValidationGroup="EditGroup" ShowModelStateErrors="false"/>
             <%--Meddelanden --%>
             <div class="message">
-            <asp:Label ID="MessageLabel" runat="server" Visible="false" CssClass="UploadLabel"></asp:Label>
+                <asp:Label ID="UploadLabel" runat="server" Text="" Visible="false" CssClass="UploadLabel"></asp:Label>
             </div>
     </div>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
-<%--Bokningar--%>
+<%--Lista med bokningar--%>
 <asp:ListView ID="BookingListView" runat="server"
     ItemType="Booking.Model.Booking"
     SelectMethod="BookingListView_GetData"
@@ -82,19 +82,23 @@
     <tr>
         <td>
             <asp:TextBox ID="Year" runat="server" Text='<%# BindItem.Year %>' />
-            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" 
-                ErrorMessage="Felaktigt format för år" ControlToValidate="Year" ValidationGroup="InsertGroup"
-                ValidationExpression="^(19|20)\d{2}$"></asp:RegularExpressionValidator>
             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
                 ErrorMessage="År måste anges" ControlToValidate="Year" ValidationGroup="InsertGroup"
                 Display="None"></asp:RequiredFieldValidator>
-            
+            <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" 
+                ErrorMessage="Felaktigt format för år" ControlToValidate="Year" ValidationExpression="^(19|20)\d{2}$"
+                ValidationGroup="InsertGrout" Display="None"></asp:RegularExpressionValidator>
+
         </td>
         <td>
             <asp:TextBox ID="Week" runat="server" Text='<%# BindItem.Week %>' />
             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
                 ErrorMessage="Vecka måste anges" ControlToValidate="Week" ValidationGroup="InsertGroup"
                 Display="None"></asp:RequiredFieldValidator>
+            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" 
+                ErrorMessage="Felaktigt format för vecka" ControlToValidate="Week" ValidationExpression="^([0-5]?[0-9]|53)$"
+                ValidationGroup="InsertGrout" Display="None"></asp:RegularExpressionValidator>
+
         </td>
         <td>
             <asp:DropDownList ID="PropertyNameDropDownList" runat="server"
@@ -111,6 +115,10 @@
             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" 
                 ErrorMessage="Pris måste anges" ControlToValidate="Price" ValidationGroup="InsertGroup"
                 Display="None"></asp:RequiredFieldValidator>
+            <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" 
+                ErrorMessage="Felaktigt format för pris" ControlToValidate="Price" ValidationExpression="^(?=[0-9]{3,6}$)0*[1-9][0-9]{2,5}"
+                ValidationGroup="InsertGrout" Display="None"></asp:RegularExpressionValidator>
+            
         </td>
         <td>
             <asp:DropDownList ID="CustomerNameDropDownList" runat="server"

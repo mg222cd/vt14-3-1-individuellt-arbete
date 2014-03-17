@@ -23,7 +23,7 @@ namespace Booking.Pages.BookingPages
 
         }
 
-        //Hämtar alla bokningar
+        //Hämtar lista med alla bokningar
         public IEnumerable<Model.Booking> BookingListView_GetData()
         {
             return Service.GetAllBookings();
@@ -35,6 +35,9 @@ namespace Booking.Pages.BookingPages
             try
             {
                 Service.DeleteBooking(bookingId);
+                //statusmeddelande
+                UploadLabel.Visible = true;
+                UploadLabel.Text = "Bokning raderades.";
             }
             catch (Exception)
             {
@@ -42,7 +45,7 @@ namespace Booking.Pages.BookingPages
             }
         }
 
-        //Ger Namn till FK:s
+        //Visar namnen på Foreign Keys i tabellen
         protected void BookingListView_ItemDataBound(object sender, ListViewItemEventArgs e)
         {
             var bookingInfo = (Booking.Model.Booking)e.Item.DataItem;
@@ -68,6 +71,9 @@ namespace Booking.Pages.BookingPages
                 try
                 {
                     Service.SaveBooking(booking);
+                    //statusmeddelande
+                    UploadLabel.Visible = true;
+                    UploadLabel.Text = "Ny bokning lades till.";
                 }
                 catch (Exception)
                 {
@@ -76,13 +82,13 @@ namespace Booking.Pages.BookingPages
             }
         }
 
-        //DropdownList för Stugnamn - Insert
+        //DropdownList för Stugnamn vid Insert
         public IEnumerable<Property> PropertyNameDropDownList_GetData()
         {
             return Service.GetProperties();
         }
 
-        //Dropdownlist för Kundnamn - Insert
+        //Dropdownlist för Kundnamn vid Insert
         public IEnumerable<Customer> CustomerNameDropDownList_GetData()
         {
             return Service.GetCustomers();

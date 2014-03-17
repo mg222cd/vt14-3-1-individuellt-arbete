@@ -8,7 +8,6 @@ namespace Booking.Model
 {
     public class Customer
     {
-        //Egeneskaper som motsvarar kolumner i tabellen.
         public int CustomerID { get; set; }
 
         [Required(ErrorMessage = "Ett namn måste anges.")]
@@ -21,7 +20,7 @@ namespace Booking.Model
 
         [Required(ErrorMessage = "Postnr måste anges.")]
         [StringLength(6)]
-        [RegularExpression(@"^[1-9]\d{2} ?\d{2}", ErrorMessage = "Felaktigt format för postnummer.")]
+        [RegularExpression(@"^[1-9]\d{2} ?\d{2}", ErrorMessage = "Felaktigt format för postnummer. Max 5 siffror")]
         public string Postal { get; set; }
 
         [Required(ErrorMessage = "Ort måste anges.")]
