@@ -10,7 +10,6 @@
                     ValidationGroup="InsertGroup" ShowModelStateErrors="false" />
                 <asp:ValidationSummary ID="ValidationSummary3" runat="server" HeaderText="Fel inträffade! Korrigera och försök igen." 
                     ValidationGroup="EditGroup" ShowModelStateErrors="false"/>
-
             <%--Meddelanden --%>
             <div class="message">
             <asp:Label ID="MessageLabel" runat="server" Visible="false" CssClass="UploadLabel"></asp:Label>
@@ -28,53 +27,55 @@
     OnItemDataBound="BookingListView_ItemDataBound" 
     InsertItemPosition="FirstItem"
     Visible="true">
-    <LayoutTemplate>
-        <table class="grid">
-            <tr>
-                <th>År</th>
-                <th>Vecka</th>
-                <th>Stuga</th>
-                <th>Pris</th>
-                <th>Bokad</th>
-                <th></th>
-            </tr>
-        <%--platshållare för nya rader--%>
-        <asp:PlaceHolder ID="ItemPlaceHolder" runat="server"></asp:PlaceHolder>
-        </table>
-    </LayoutTemplate>
-    <ItemTemplate>
-        <%--Mall för nya rader--%>
-        <tr>
-            <td>
-                <asp:Label ID="YearLabel" runat="server" Text='<%#: Item.Year %>' ></asp:Label>
-            </td>
-            <td>
-                <asp:Label ID="WeekLabel" runat="server" Text='<%#: Item.Week %>' ></asp:Label>
-            </td>
-            <td>
-                <asp:Label ID="PropertyIDLabel" runat="server" Text='<%#: Item.PropertyID %>' ></asp:Label>
-            </td>
-            <td>
-                <asp:Label ID="PriceLabel" runat="server" Text='<%#: Item.Price %>' ></asp:Label>
-            </td>
-            <td>
-                <asp:Label ID="CustomerIDLabel" runat="server" Text='<%#: Item.CustomerID %>' ></asp:Label>
-            </td>
-            <td>
-                <asp:LinkButton runat="server" CommandName="Delete" Text="Radera" CausesValidation="false" 
-                    OnClientClick='<%# String.Format("return confirm(\"Vill du verkligen radera bokningen?\")") %>' />
-            </td>
-        </tr>
-    </ItemTemplate>
-    <EmptyDataTemplate>
-    <%-- Detta visas då uppgifter saknas i databasen. --%>
+<%--Kolumnrubriker--%>
+<LayoutTemplate>
     <table class="grid">
         <tr>
-            <td>
-                Uppgifter saknas.
-            </td>
+            <th>År</th>
+            <th>Vecka</th>
+            <th>Stuga</th>
+            <th>Pris</th>
+            <th>Bokad</th>
+            <th></th>
         </tr>
+    <%--platshållare för nya rader--%>
+    <asp:PlaceHolder ID="ItemPlaceHolder" runat="server"></asp:PlaceHolder>
     </table>
+</LayoutTemplate>
+<%--Visar lista--%>
+<ItemTemplate>
+    <%--Mall för nya rader--%>
+    <tr>
+        <td>
+            <asp:Label ID="YearLabel" runat="server" Text='<%#: Item.Year %>' ></asp:Label>
+        </td>
+        <td>
+            <asp:Label ID="WeekLabel" runat="server" Text='<%#: Item.Week %>' ></asp:Label>
+        </td>
+        <td>
+            <asp:Label ID="PropertyIDLabel" runat="server" Text='<%#: Item.PropertyID %>' ></asp:Label>
+        </td>
+        <td>
+            <asp:Label ID="PriceLabel" runat="server" Text='<%#: Item.Price %>' ></asp:Label>
+        </td>
+        <td>
+            <asp:Label ID="CustomerIDLabel" runat="server" Text='<%#: Item.CustomerID %>' ></asp:Label>
+        </td>
+        <td class="command">
+                <asp:LinkButton runat="server" CommandName="Delete" Text="Radera" CausesValidation="false" 
+                OnClientClick='<%# String.Format("return confirm(\"Vill du verkligen radera bokningen?\")") %>' />
+        </td>
+    </tr>
+</ItemTemplate>
+<%--Detta visas då uppgifter saknas i databasen.--%>
+<EmptyDataTemplate>
+<table class="grid">
+    <tr>
+        <td>
+            Uppgifter saknas.
+        </td>
+    </tr>
+</table>
 </EmptyDataTemplate>
 <%--Lägg till Bokning--%>
 <InsertItemTemplate>

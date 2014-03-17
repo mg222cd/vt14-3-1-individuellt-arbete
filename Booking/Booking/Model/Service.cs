@@ -142,7 +142,7 @@ namespace Booking.Model
             }
             else
             {
-                //TODO Uppdatering här (eller ngt slags meddelande)
+                BookingDAL.UpdateBooking(booking);
             }
         }
 

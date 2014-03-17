@@ -377,6 +377,39 @@ namespace Booking.Model.DAL
             }
         }
 
+        //metod för att uppdatera bokning 
+        public void UpdateBooking(Booking booking)
+        {
+            using (SqlConnection conn = CreateConnection())
+            {
+                try
+                {
+                    //lagrad procedur
+                    SqlCommand cmd = new SqlCommand("[appSchema].[usp_UpdateBooking]", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    //lägger till parametrar
+                    cmd.Parameters.Add("@BookingID", SqlDbType.Int, 4).Value = booking.BookingID;
+                    cmd.Parameters.Add("@CustomerID", SqlDbType.Int, 4).Value = booking.CustomerID;
+                    cmd.Parameters.Add("@PropertyID", SqlDbType.Int, 4).Value = booking.PropertyID;
+                    cmd.Parameters.Add("@Week", SqlDbType.Int, 4).Value = booking.Week;
+                    cmd.Parameters.Add("@Year", SqlDbType.Int, 4).Value = booking.Year;
+                    cmd.Parameters.Add("@Price", SqlDbType.Int, 4).Value = booking.Price;
+
+                    //öppnar anslutning
+                    conn.Open();
+
+                    //exekverar den lagrade proceduren
+                    cmd.ExecuteNonQuery();
+                }
+                catch
+                {
+                    throw new ApplicationException("Fel uppstod när kund skulle uppdateras");
+                }
+
+            }
+        }
+
         #endregion
     }
 }
