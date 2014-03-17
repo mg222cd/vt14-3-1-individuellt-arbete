@@ -37,10 +37,10 @@ body {
     font-weight:bold;
 }
 
-.ValidationSummaryErrors ul li{
+.ValidationSummaryErrors ul li, .links{
     font-weight:100;
     list-style:circle;
-    margin-left:20px;
+    margin-right:20px;
     padding-top:7px;
 }
 
