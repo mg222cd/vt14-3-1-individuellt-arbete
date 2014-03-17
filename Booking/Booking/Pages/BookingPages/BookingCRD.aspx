@@ -35,7 +35,7 @@
             <th>Vecka</th>
             <th>Stuga</th>
             <th>Pris</th>
-            <th>Bokad</th>
+            <th>Kund</th>
             <th></th>
         </tr>
     <%--platshållare för nya rader--%>
@@ -82,9 +82,13 @@
     <tr>
         <td>
             <asp:TextBox ID="Year" runat="server" Text='<%# BindItem.Year %>' />
+            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" 
+                ErrorMessage="Felaktigt format för år" ControlToValidate="Year" ValidationGroup="InsertGroup"
+                ValidationExpression="^(19|20)\d{2}$"></asp:RegularExpressionValidator>
             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
                 ErrorMessage="År måste anges" ControlToValidate="Year" ValidationGroup="InsertGroup"
                 Display="None"></asp:RequiredFieldValidator>
+            
         </td>
         <td>
             <asp:TextBox ID="Week" runat="server" Text='<%# BindItem.Week %>' />

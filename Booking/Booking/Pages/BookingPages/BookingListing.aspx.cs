@@ -61,8 +61,8 @@ namespace Booking.Pages.BookingPages
             bookingObject = Service.GetBooking(bookingID);
             //Infotext
             MessageLabel.Visible = false;
-            Literal1.Visible = true;
-            Literal1.Text = String.Format(Literal1.Text="Bokning avseende vecka {0} år {1}. Pris {2}:-.", 
+            Literal2.Visible = true;
+            Literal2.Text = String.Format(Literal2.Text="Bokning avseende vecka {0} år {1}. Pris {2}:-.", 
                 bookingObject.Week, bookingObject.Year, bookingObject.Price);
             
         }

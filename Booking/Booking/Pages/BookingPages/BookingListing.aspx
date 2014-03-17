@@ -13,11 +13,12 @@
             <asp:Label ID="MessageLabel" runat="server" Text="Nedan visas bokningsbara veckor för respektive stuga. 
                 Enbart hela veckor kan bokas. Bytesdag är alltid lördag. Slutstädning ingår ej i priset." 
                 Visible="true" CssClass="UploadLabel"></asp:Label>
-            <div class="message" id="BookingInfoDiv">
-            <asp:Literal ID="Literal1" runat="server" Visible="true">
-                
-            </asp:Literal>
-            </div>
+                <div class="message" id="BookingInfoDiv">
+                    <asp:Literal ID="Literal1" runat="server" Visible="true">
+                    </asp:Literal>
+                </div>
+                   <asp:Literal ID="Literal2" runat="server" Visible="true">
+                    </asp:Literal> 
             </div>
             <%--Validation Summary--%>
     </div>
@@ -29,7 +30,8 @@
     ItemType="Booking.Model.Customer"
     DefaultMode="Insert"
     InsertMethod="CustomerFormView_InsertItem"
-    Visible="false">
+    Visible="false"
+    ViewStateMode="Enabled">
     <InsertItemTemplate>
         <%--Informationstext--%>
         <div class="message">
@@ -116,7 +118,8 @@
     ItemType="Booking.Model.Booking"
     SelectMethod="Unbooked1ListView_GetData"
     DataKeyNames="BookingID" 
-    Visible="true">
+    Visible="true"
+    ViewStateMode="Enabled">
     <LayoutTemplate>
         <table class="maintable">
             <tr><th class="th_header">Stuga 1 - Lillstugan</th></tr>
@@ -158,7 +161,8 @@
     ItemType="Booking.Model.Booking"
     SelectMethod="Unbooked2ListView_GetData"
     DataKeyNames="BookingID"
-    Visible="true" >
+    Visible="true"
+    ViewStateMode="Enabled">
     <LayoutTemplate>
         <table class="maintable">
             <tr><th class="th_header">Stuga 2 - Huset</th></tr>

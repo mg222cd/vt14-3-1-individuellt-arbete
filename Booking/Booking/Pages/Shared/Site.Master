@@ -7,7 +7,7 @@
     <title>Booking</title>
         <link href="~/Content/reset.css" rel="stylesheet" type="text/css" />
         <link href="~/Content/site.css" rel="stylesheet" type="text/css" />
-        <%: System.Web.Optimization.Scripts.Render("http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js") %>
+        <%: System.Web.Optimization.Scripts.Render("http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js") %>
 
 </head>
 <body>
