@@ -72,7 +72,7 @@ namespace Booking.Pages.BookingPages
                     //infoga, uppdatera & visa meddelande
                     Service.SaveCustomerAndUpdateBooking(bookingId, customer);
                     Session.Clear();
-                    Response.Redirect("BookingSuccess.aspx");
+                    Response.RedirectToRoute("BookingSuccess");
                 }
                 catch (Exception)
                 {

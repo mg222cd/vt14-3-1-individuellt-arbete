@@ -13,6 +13,7 @@ namespace Booking.App_Start
             routes.MapPageRoute(    "Default",          "",                  "~/Pages/BookingPages/BookingListing.aspx");
             routes.MapPageRoute(    "BookingCRD",       "booking/admin",     "~/Pages/BookingPages/BookingCRD.aspx");
             routes.MapPageRoute(    "CustomerCrud",     "customer/admin",    "~/Pages/CustomerPages/CustomerCrud.aspx");
+            routes.MapPageRoute(    "BookingSuccess",   "booking/success",   "~/Pages/BookingPages/BookingSuccess.aspx");
         }
     }
 }

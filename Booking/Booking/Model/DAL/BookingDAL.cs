@@ -277,7 +277,7 @@ namespace Booking.Model.DAL
                     cmd.Parameters.Add("@Email", SqlDbType.VarChar, 50).Value = customer.Email;
 
                     //parameter som tar emot värde från lagrade proceduren (i detta fall med nya postens customerId)
-                    cmd.Parameters.Add("@CustomerId", SqlDbType.Int, 4).Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("@CustomerID", SqlDbType.Int, 4).Direction = ParameterDirection.Output;
 
                     //öppnar anslutning till databasen
                     conn.Open();
@@ -286,7 +286,7 @@ namespace Booking.Model.DAL
                     cmd.ExecuteNonQuery();
 
                     //metod för att exec lagrade proceduren
-                    customer.CustomerID = (int)cmd.Parameters["@CustomerId"].Value;
+                    customer.CustomerID = (int)cmd.Parameters["@CustomerID"].Value;
                 }
                 catch
                 {
